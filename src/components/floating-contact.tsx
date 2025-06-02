@@ -1,107 +1,180 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const FloatingContact = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    // Masquer le bouton lors du défilement vers le bas
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+            
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
 
     const buttonVariants = {
-        initial: { scale: 1 },
-        hover: { scale: 1.1 },
-        tap: { scale: 0.95 }
+        initial: { scale: 1, y: 0 },
+        hover: { scale: 1.1, y: -5 },
+        tap: { scale: 0.95 },
+        hidden: { y: 100, opacity: 0 },
+        visible: { y: 0, opacity: 1 }
     };
 
     const menuVariants = {
         hidden: { 
             opacity: 0,
-            x: 20,
-            y: 10,
-            transition: { staggerChildren: 0.05, staggerDirection: -1 }
+            y: 20,
+            transition: { 
+                staggerChildren: 0.05, 
+                staggerDirection: -1,
+                when: "afterChildren"
+            }
         },
         visible: { 
             opacity: 1,
-            x: 0,
             y: 0,
-            transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+            transition: { 
+                staggerChildren: 0.07, 
+                delayChildren: 0.1,
+                when: "beforeChildren"
+            }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, x: 20 },
-        visible: { opacity: 1, x: 0 }
+        hidden: { opacity: 0, y: 10 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { type: "spring", stiffness: 300, damping: 20 }
+        },
+        hover: { x: 5, backgroundColor: "rgba(255,255,255,0.1)" }
     };
 
     const contactOptions = [
-        { icon: "📧", label: "Email", link: "mailto:contact@sorcidigit.com" },
-        { icon: "📱", label: "WhatsApp", link: "https://wa.me/yourphone" },
-        { icon: "💬", label: "Telegram", link: "https://t.me/yourusername" }
+        { 
+            icon: "/icons/email.svg", 
+            label: "Email", 
+            link: "mailto:contact@votreagence.com",
+            description: "Contactez-nous par email" 
+        },
+        { 
+            icon: "/icons/whatsapp.svg", 
+            label: "WhatsApp", 
+            link: "https://wa.me/33612345678",
+            description: "Discutons en direct" 
+        },
+        { 
+            icon: "/icons/phone.svg", 
+            label: "Appel", 
+            link: "tel:+33612345678",
+            description: "Appelez-nous directement" 
+        },
+        { 
+            icon: "/icons/calendar.svg", 
+            label: "RDV", 
+            link: "https://calendly.com/votreagence",
+            description: "Prenez rendez-vous" 
+        }
     ];
 
     return (
-        <div className="fixed bottom-8 right-8 z-50">
+        <motion.div 
+            className="fixed bottom-6 right-6 z-50"
+            initial="hidden"
+            animate={isVisible ? "visible" : "hidden"}
+            variants={buttonVariants}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="absolute bottom-full right-0 mb-4 bg-gray-900/90 backdrop-blur-md rounded-lg p-2 min-w-[200px]"
+                        className="absolute bottom-full right-0 mb-4 bg-gray-900/95 backdrop-blur-lg rounded-xl shadow-xl overflow-hidden border border-gray-700/50"
                         variants={menuVariants}
                         initial="hidden"
                         animate="visible"
                         exit="hidden"
                     >
-                        {contactOptions.map((option, index) => (
-                            <motion.a
-                                key={index}
-                                href={option.link}
-                                className="flex items-center gap-3 px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-colors"
-                                variants={itemVariants}
-                                whileHover={{ x: 5 }}
-                            >
-                                <span className="text-xl">{option.icon}</span>
-                                <span className="text-sm font-medium">{option.label}</span>
-                            </motion.a>
-                        ))}
+                        <div className="p-3 border-b border-gray-700/50">
+                            <h3 className="text-sm font-semibold text-[#3B82F6]">Contact rapide</h3>
+                            <p className="text-xs text-gray-400">Nous répondons sous 24h</p>
+                        </div>
+                        
+                        <div className="divide-y divide-gray-700/50">
+                            {contactOptions.map((option, index) => (
+                                <motion.a
+                                    key={index}
+                                    href={option.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 px-4 py-3 text-white hover:bg-white/5 transition-colors"
+                                    variants={itemVariants}
+                                    whileHover="hover"
+                                >
+                                    <div className="relative w-6 h-6 flex-shrink-0">
+                                        <Image
+                                            src={option.icon}
+                                            alt={option.label}
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-sm font-medium truncate">{option.label}</p>
+                                        <p className="text-xs text-gray-400 truncate">{option.description}</p>
+                                    </div>
+                                    <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </motion.a>
+                            ))}
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
             <motion.button
-                className="bg-[#0CF2A0] text-black rounded-full p-4 shadow-lg shadow-[#0CF2A0]/20"
+                className={`rounded-full p-4 shadow-lg flex items-center justify-center ${
+                    isOpen ? "bg-gray-800 border border-gray-700" : "bg-[#3B82F6]"
+                }`}
                 variants={buttonVariants}
                 initial="initial"
                 whileHover="hover"
                 whileTap="tap"
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? "Fermer les contacts" : "Ouvrir les contacts"}
             >
                 <motion.div
-                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <svg 
-                        className="w-6 h-6" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
-                        stroke="currentColor"
-                    >
-                        {isOpen ? (
-                            <path 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth={2} 
-                                d="M6 18L18 6M6 6l12 12" 
-                            />
-                        ) : (
-                            <path 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth={2} 
-                                d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" 
-                            />
-                        )}
-                    </svg>
+                    {isOpen ? (
+                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    ) : (
+                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                    )}
                 </motion.div>
             </motion.button>
-        </div>
+        </motion.div>
     );
 };
 
