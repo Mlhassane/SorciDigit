@@ -25,7 +25,6 @@ import {
     type TargetAndTransition,
     type Variants,
 } from 'framer-motion';
-import { HeroWithMockup } from './hero-with-mockup';
 import Navbar from './navbar';
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {

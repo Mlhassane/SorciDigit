@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 
 const FloatingContact = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -68,28 +67,28 @@ const FloatingContact = () => {
 
     const contactOptions = [
         { 
-            icon: "/icons/email.svg", 
+            emoji: "✉️", 
             label: "Email", 
             link: "mailto:contact@votreagence.com",
-            description: "Contactez-nous par email" 
+            description: "Réponse sous 24h" 
         },
         { 
-            icon: "/icons/whatsapp.svg", 
-            label: "WhatsApp", 
-            link: "https://wa.me/33612345678",
-            description: "Discutons en direct" 
+            emoji: "💬", 
+            label: "Messagerie", 
+            link: "https://m.me/votreagence",
+            description: "Chat en direct" 
         },
         { 
-            icon: "/icons/phone.svg", 
-            label: "Appel", 
+            emoji: "📞", 
+            label: "Téléphone", 
             link: "tel:+33612345678",
-            description: "Appelez-nous directement" 
+            description: "Appel direct" 
         },
         { 
-            icon: "/icons/calendar.svg", 
+            emoji: "📅", 
             label: "RDV", 
             link: "https://calendly.com/votreagence",
-            description: "Prenez rendez-vous" 
+            description: "Planifier un appel" 
         }
     ];
 
@@ -111,8 +110,8 @@ const FloatingContact = () => {
                         exit="hidden"
                     >
                         <div className="p-3 border-b border-gray-700/50">
-                            <h3 className="text-sm font-semibold text-[#3B82F6]">Contact rapide</h3>
-                            <p className="text-xs text-gray-400">Nous répondons sous 24h</p>
+                            <h3 className="text-sm font-semibold text-[#3B82F6]">Contactez-nous</h3>
+                            <p className="text-xs text-gray-400">Plusieurs canaux disponibles</p>
                         </div>
                         
                         <div className="divide-y divide-gray-700/50">
@@ -126,21 +125,12 @@ const FloatingContact = () => {
                                     variants={itemVariants}
                                     whileHover="hover"
                                 >
-                                    <div className="relative w-6 h-6 flex-shrink-0">
-                                        <Image
-                                            src={option.icon}
-                                            alt={option.label}
-                                            fill
-                                            className="object-contain"
-                                        />
-                                    </div>
+                                    <span className="text-2xl flex-shrink-0">{option.emoji}</span>
                                     <div className="flex-1 min-w-0">
                                         <p className="text-sm font-medium truncate">{option.label}</p>
                                         <p className="text-xs text-gray-400 truncate">{option.description}</p>
                                     </div>
-                                    <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                    </svg>
+                                    <span className="text-gray-400">→</span>
                                 </motion.a>
                             ))}
                         </div>
@@ -150,8 +140,8 @@ const FloatingContact = () => {
 
             <motion.button
                 className={`rounded-full p-4 shadow-lg flex items-center justify-center ${
-                    isOpen ? "bg-gray-800 border border-gray-700" : "bg-[#3B82F6]"
-                }`}
+                    isOpen ? "bg-gray-800 border border-gray-700" : "bg-[#3B82F6] hover:bg-[#3B82F6]/90"
+                } transition-colors`}
                 variants={buttonVariants}
                 initial="initial"
                 whileHover="hover"
@@ -164,13 +154,9 @@ const FloatingContact = () => {
                     transition={{ duration: 0.3 }}
                 >
                     {isOpen ? (
-                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                        <span className="text-xl">✕</span>
                     ) : (
-                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
+                        <span className="text-xl">💬</span>
                     )}
                 </motion.div>
             </motion.button>
