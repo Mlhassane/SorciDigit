@@ -1,12 +1,13 @@
-import InteractiveHero from "@/components/hero-section-nexus";
-import FloatingContact from '@/components/floating-contact';
-
-export default function Page() {  
-  return (
-    <div>
-      {/* <FloatingLogo /> */}
-      <InteractiveHero/>
-      <FloatingContact />
+ import React from 'react'
+ 
+ const page = () => {
+   return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold mb-4">Welcome to My App</h1>
+      <p className="text-lg text-gray-700">This is a simple Next.js application.</p>
     </div>
-  );
-}
+   )
+ }
+ 
+ export default page
+ 
