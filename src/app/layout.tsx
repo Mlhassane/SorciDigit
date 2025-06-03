@@ -12,9 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-    title: 'Sorci Digit - Agence de Marketing Digital et SEO',
-    description: 'Sorci Digit, votre agence de marketing digital à Paris. Boostez votre présence en ligne avec nos services SEO, branding et réseaux sociaux.',
-    keywords: 'marketing digital, SEO, branding, réseaux sociaux, agence communication, Paris',
+    title: 'Sorci Digit - Agence de Marketing Digital et Communication',
+    description: 'Sorci Digit, votre agence de marketing digital. Boostez votre présence en ligne avec nos services SEO, branding et réseaux sociaux.',
+    keywords: 'marketing digital, SEO, branding, réseaux sociaux, agence communication,Niger, Afrique',
     authors: [{ name: 'Sorci Digit' }],
 };
 export default function RootLayout({
@@ -27,6 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+              {/* Main content area */}
         {children}
       </body>
     </html>
