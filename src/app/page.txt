@@ -1,0 +1,1193 @@
+import { motion } from "framer-motion";
+
+
+
+export default function Home() 
+{ 
+  return <div> 
+    <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="relative py-6 md:py-12  h-screen  rounded-b-[64px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-red-900 via-red-700 to-red-500"
+        >
+          {/* Background Image with Better Overlay */}
+          <div className="absolute  h-screen inset-0 z-0">
+            <img
+              src="/herooooo.png"
+              alt="Professional Network"
+              className="w-full h-full object-cover opacity-60"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-red-00/90 via-red-00/80 to-red-00/70" />
+          </div>
+
+          {/* Floating Elements for Visual Interest */}
+
+
+          {/* Main Content */}
+          <div className="flex flex-col items-center relative z-10 max-w-4xl mx-auto text-center px-4 animate-fade-in">
+            {/* Logo/Brand */}
+
+
+            {/* Main Heading with Better Typography */}
+            <div className="flex flex-col items-center relative z-10 max-w-3xl mx-auto text-center px-4">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl">
+                Trouve ton emploi,<br />Développe ton futur
+              </h1>
+              <p className="text-lg md:text-xl lg:text-2xl font-medium mb-8 text-red-100">
+                La plateforme ultime pour la recherche d'emploi et le coaching en ligne.<br />Transforme ta carrière dès aujourd'hui !
+              </p>
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <button className="bg-white text-red-900 font-bold py-4 px-8 md:px-10 rounded-full shadow-2xl hover:shadow-red-500/50">
+                  Rechercher un emploi
+                </button>
+                <button className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 md:px-10 rounded-full hover:bg-white hover:text-red-900">
+                  Coaching gratuit
+                </button>
+              </div>
+            </div>
+
+
+            {/* Trust Indicators */}
+            <div className="mt-16 flex flex-wrap justify-center items-center gap-8 text-red-100">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">+1,000 emplois trouvés</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">+500 coachings réalisés</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">98% de satisfaction</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
+        </motion.div>
+    <section className="px-6 py-20 max-w-6xl mx-auto">
+        <div
+          className="transition-all duration-1000 delay-1400 translate-y-0 opacity-100"
+        >
+          {/* Services Header */}
+          <div className="flex items-center gap-4 mb-12">
+            <div className="w-8 h-8 border-2 border-black rounded-full flex items-center justify-center animate-breathe">
+              <div className="w-2 h-2 bg-black rounded-full animate-pulse-dot"></div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-black">Services</h2>
+          </div>
+
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-auto">
+            {/* Ultra Design Card */}
+            <div className="lg:row-span-2 bg-black rounded-3xl p-8 flex flex-col justify-center items-center text-white min-h-[300px] lg:min-h-[400px] group hover:scale-105 transition-all duration-500 hover:shadow-2xl cursor-pointer">
+              <div className="text-center">
+                <h3 className="text-6xl md:text-7xl font-light mb-4 group-hover:scale-110 transition-transform duration-300">
+                  UD
+                </h3>
+                <p className="text-xl opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  Ultra Design
+                </p>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            {/* Secure Payment Card */}
+            <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 rounded-3xl p-6 text-white min-h-[180px] group hover:scale-105 transition-all duration-500 hover:shadow-2xl cursor-pointer">
+              <h3 className="text-xl font-semibold mb-6 group-hover:scale-105 transition-transform duration-300">
+                Paiement sécurisé
+              </h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-6 h-6 border-2 border-white rounded-full flex items-center justify-center">
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse-dot"></div>
+                  </div>
+                  <div className="w-12 h-6 bg-white/30 rounded-full relative">
+                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 animate-float"></div>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="w-6 h-6 border-2 border-white rounded-full flex items-center justify-center">
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse-dot"></div>
+                  </div>
+                  <div className="w-12 h-6 bg-white/30 rounded-full relative">
+                    <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5 animate-float-delayed"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* iOS App Card */}
+            <div className="bg-black rounded-3xl p-6 text-white min-h-[180px] flex flex-col justify-center items-center group hover:scale-105 transition-all duration-500 hover:shadow-2xl cursor-pointer">
+              <div className="text-center">
+                <h3 className="text-3xl font-light mb-2 group-hover:scale-110 transition-transform duration-300">
+                  iOS
+                </h3>
+                <p className="text-lg opacity-80 group-hover:opacity-100 transition-opacity duration-300">App</p>
+                <div className="w-12 h-1 bg-white mx-auto mt-4 group-hover:w-16 transition-all duration-300"></div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-600/20 to-gray-400/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            {/* Website Card */}
+            <div className="lg:col-span-2 bg-black rounded-3xl p-8 text-white min-h-[200px] flex items-center justify-center group hover:scale-105 transition-all duration-500 hover:shadow-2xl cursor-pointer">
+              <h3 className="text-4xl md:text-5xl font-light group-hover:scale-110 transition-transform duration-300">
+                Site web
+              </h3>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+  </div>
+}
+
+
+
+"use client";
+
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+
+const Home = () => {
+  // ... (conserve tout le code précédent jusqu'à la section Portfolio)
+
+  /* Nouvelle Section Portfolio - Scroll Horizontal */
+  const projectsRef = useRef(null);
+  const [currentProject, setCurrentProject] = useState(0);
+
+  const projects = [
+    {
+      id: 1,
+      title: "Révolution E-commerce",
+      client: "TechStyle Fashion",
+      description: "Transformation complète d'une boutique en ligne avec augmentation de 300% des conversions.",
+      technologies: ["React", "Node.js", "Stripe"],
+      image: "🛒"
+    },
+    {
+      id: 2,
+      title: "Application Mobile",
+      client: "StartUp Innovante",
+      description: "App mobile native avec fonctionnalités AI pour 50K+ utilisateurs actifs.",
+      technologies: ["React Native", "Python", "TensorFlow"],
+      image: "📱"
+    },
+    {
+      id: 3,
+      title: "Plateforme SaaS",
+      client: "Enterprise Solutions",
+      description: "Plateforme B2B complète avec dashboard analytique et intégrations API.",
+      technologies: ["Vue.js", "Laravel", "PostgreSQL"],
+      image: "💻"
+    },
+    {
+      id: 4,
+      title: "Marketplace Innovante",
+      client: "GreenTech Corp",
+      description: "Marketplace écologique avec système de matching intelligent.",
+      technologies: ["Next.js", "GraphQL", "Prisma"],
+      image: "🌱"
+    }
+  ];
+
+  const handleScroll = (e) => {
+    if (e.deltaY > 0) {
+      setCurrentProject(prev => Math.min(prev + 1, projects.length - 1));
+    } else {
+      setCurrentProject(prev => Math.max(prev - 1, 0));
+    }
+  };
+
+  /* Section Services - Bento Grid */
+  const services = [
+    { 
+      title: "Stratégie Digitale", 
+      icon: "🎯", 
+      description: "Plans sur mesure pour dominer le digital",
+      size: "medium",
+      color: "bg-purple-500/10"
+    },
+    { 
+      title: "Branding", 
+      icon: "✨", 
+      description: "Identités visuelles qui marquent les esprits",
+      size: "small",
+      color: "bg-blue-500/10"
+    },
+    { 
+      title: "Développement Web", 
+      icon: "💻", 
+      description: "Sites performants et expériences utilisateur exceptionnelles",
+      size: "large",
+      color: "bg-emerald-500/10"
+    },
+    { 
+      title: "Réseaux Sociaux", 
+      icon: "📱", 
+      description: "Stratégies de contenu qui engagent",
+      size: "small",
+      color: "bg-amber-500/10"
+    },
+    { 
+      title: "UX/UI Design", 
+      icon: "🎨", 
+      description: "Interfaces intuitives et esthétiques",
+      size: "medium",
+      color: "bg-rose-500/10"
+    }
+  ];
+
+  return (
+    <div className="relative bg-black text-white overflow-x-hidden">
+      {/* ... (conserve tout le code précédent jusqu'à la section Portfolio) */}
+
+      {/* Nouvelle Section Portfolio - Scroll Horizontal */}
+      <section 
+        ref={projectsRef}
+        className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+        onWheel={handleScroll}
+      >
+        <div className="relative h-[80vh] w-[80vw] mx-auto">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              className={`absolute inset-0 flex flex-col items-center justify-center p-12 rounded-3xl border border-gray-700/30 backdrop-blur-sm transition-all duration-500 ${
+                currentProject === index ? 'z-10 opacity-100' : 'z-0 opacity-0'
+              }`}
+              style={{
+                background: `linear-gradient(135deg, rgba(30, 30, 40, 0.8) 0%, rgba(10, 10, 20, 0.9) 100%)`
+              }}
+            >
+              <motion.div 
+                className="text-9xl mb-8"
+                animate={{ 
+                  y: currentProject === index ? 0 : 100,
+                  opacity: currentProject === index ? 1 : 0
+                }}
+                transition={{ duration: 0.6 }}
+              >
+                {project.image}
+              </motion.div>
+              
+              <motion.div
+                className="text-center max-w-2xl"
+                animate={{ 
+                  y: currentProject === index ? 0 : 50,
+                  opacity: currentProject === index ? 1 : 0
+                }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <h3 className="text-4xl font-bold text-white mb-4">{project.title}</h3>
+                <p className="text-lg text-gray-300 mb-6">{project.description}</p>
+                <div className="flex justify-center gap-3 mb-8">
+                  {project.technologies.map(tech => (
+                    <span key={tech} className="px-4 py-2 bg-white/10 rounded-full text-sm">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-gray-400 italic">Client: {project.client}</p>
+              </motion.div>
+
+              <motion.div 
+                className="absolute bottom-8 left-0 right-0 flex justify-center gap-2"
+                animate={{ opacity: currentProject === index ? 1 : 0 }}
+              >
+                {projects.map((_, i) => (
+                  <button 
+                    key={i}
+                    onClick={() => setCurrentProject(i)}
+                    className={`w-3 h-3 rounded-full transition-all ${i === currentProject ? 'bg-white w-6' : 'bg-white/30'}`}
+                  />
+                ))}
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section Services - Bento Grid */}
+      <section className="py-32 px-8 max-w-7xl mx-auto">
+        <motion.h2
+          className="text-5xl md:text-7xl font-bold text-center mb-20"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          style={{
+            background: "linear-gradient(135deg, #ffffff 0%, #e5e7eb 50%, #9ca3af 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Nos Services Magiques
+        </motion.h2>
+
+        <div className="grid grid-cols-3 grid-rows-3 gap-4 h-[80vh]">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className={`relative rounded-2xl border border-gray-700/30 p-6 backdrop-blur-sm overflow-hidden ${
+                service.size === 'small' ? 'col-span-1 row-span-1' :
+                service.size === 'medium' ? 'col-span-2 row-span-1' :
+                'col-span-3 row-span-2'
+              } ${service.color}`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+              
+              <div className="relative z-10 h-full flex flex-col">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
+                <p className="text-gray-300">{service.description}</p>
+                {service.size === 'large' && (
+                  <motion.button
+                    className="mt-auto px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white font-medium w-fit"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    En savoir plus
+                  </motion.button>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ... (conserve le reste du code existant) */}
+    </div>
+  );
+};
+
+export default Home;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app/page.tsx
+"use client";
+
+import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef, useEffect, useState } from "react";
+
+const Home: React.FC = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const portfolioRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Effets de parallaxe sophistiqués
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -150]);
+  const scaleEffect = useTransform(scrollYProgress, [0, 0.5], [1, 1.2]);
+  const rotateEffect = useTransform(scrollYProgress, [0, 1], [0, 15]);
+
+  // Mouse tracking pour effets 3D
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set((e.clientX / window.innerWidth - 0.5) * 20);
+      mouseY.set((e.clientY / window.innerHeight - 0.5) * 20);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  // Particules magiques
+  const particlesCount = 80;
+  const [particles, setParticles] = useState<
+    { id: number; x: number; y: number; size: number; duration: number; delay: number; opacity: number }[]
+  >([]);
+
+  useEffect(() => {
+    const newParticles = Array.from({ length: particlesCount }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 6 + 1,
+      duration: Math.random() * 15 + 8,
+      delay: Math.random() * 8,
+      opacity: Math.random() * 0.8 + 0.2,
+    }));
+    setParticles(newParticles);
+  }, []);
+
+  // Portfolio
+  const [activeProject, setActiveProject] = useState(0);
+  const [isPortfolioSection, setIsPortfolioSection] = useState(false);
+
+  const projects = [
+    {
+      id: 1,
+      title: "Révolution E-commerce",
+      client: "TechStyle Fashion",
+      description: "Transformation complète d'une boutique en ligne avec augmentation de 300% des conversions.",
+      technologies: ["React", "Node.js", "Stripe"],
+      image: "🛒",
+      color: "from-purple-500/20 to-blue-500/20",
+    },
+    {
+      id: 2,
+      title: "Application Mobile",
+      client: "StartUp Innovante",
+      description: "App mobile native avec fonctionnalités AI pour 50K+ utilisateurs actifs.",
+      technologies: ["React Native", "Python", "TensorFlow"],
+      image: "📱",
+      color: "from-blue-500/20 to-cyan-500/20",
+    },
+    {
+      id: 3,
+      title: "Plateforme SaaS",
+      client: "Enterprise Solutions",
+      description: "Plateforme B2B complète avec dashboard analytique et intégrations API.",
+      technologies: ["Vue.js", "Laravel", "PostgreSQL"],
+      image: "💻",
+      color: "from-emerald-500/20 to-teal-500/20",
+    },
+  ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsPortfolioSection(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (portfolioRef.current) {
+      observer.observe(portfolioRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!isPortfolioSection) return;
+      e.preventDefault();
+      if (e.deltaY > 0) {
+        setActiveProject((prev) => Math.min(prev + 1, projects.length - 1));
+      } else {
+        setActiveProject((prev) => Math.max(prev - 1, 0));
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [isPortfolioSection]);
+
+  // Services
+  const services = [
+    { title: "Stratégie Digitale", icon: "🎯", description: "Plans sur mesure pour dominer le digital", size: "medium", color: "bg-purple-500/10" },
+    { title: "Branding", icon: "✨", description: "Identités visuelles qui marquent les esprits", size: "small", color: "bg-blue-500/10" },
+    { title: "Développement Web", icon: "💻", description: "Sites performants et expériences utilisateur exceptionnelles", size: "large", color: "bg-emerald-500/10" },
+    { title: "Réseaux Sociaux", icon: "📱", description: "Stratégies de contenu qui engagent", size: "small", color: "bg-amber-500/10" },
+    { title: "UX/UI Design", icon: "🎨", description: "Interfaces intuitives et esthétiques", size: "medium", color: "bg-rose-500/10" },
+  ];
+
+  return (
+    <div className="relative bg-black text-white overflow-hidden">
+      {/* Fond animé avec gradient magique */}
+      <motion.div
+        className="fixed inset-0 opacity-40"
+        style={{
+          background: `
+            radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.4) 0%, transparent 60%),
+            radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+            radial-gradient(circle at 40% 80%, rgba(148, 163, 184, 0.3) 0%, transparent 60%),
+            radial-gradient(circle at 60% 40%, rgba(75, 85, 99, 0.2) 0%, transparent 50%),
+            linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(17, 24, 39, 0.9) 50%, rgba(31, 41, 55, 0.85) 100%)
+          `,
+        }}
+        animate={{
+          background: [
+            `radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.4) 0%, transparent 60%),
+             radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+             radial-gradient(circle at 40% 80%, rgba(148, 163, 184, 0.3) 0%, transparent 60%),
+             radial-gradient(circle at 60% 40%, rgba(75, 85, 99, 0.2) 0%, transparent 50%),
+             linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(17, 24, 39, 0.9) 50%, rgba(31, 41, 55, 0.85) 100%)`,
+            `radial-gradient(circle at 80% 20%, rgba(120, 119, 198, 0.4) 0%, transparent 60%),
+             radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+             radial-gradient(circle at 70% 30%, rgba(148, 163, 184, 0.3) 0%, transparent 60%),
+             radial-gradient(circle at 30% 70%, rgba(75, 85, 99, 0.2) 0%, transparent 50%),
+             linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(17, 24, 39, 0.9) 50%, rgba(31, 41, 55, 0.85) 100%)`,
+            `radial-gradient(circle at 60% 70%, rgba(120, 119, 198, 0.4) 0%, transparent 60%),
+             radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+             radial-gradient(circle at 80% 60%, rgba(148, 163, 184, 0.3) 0%, transparent 60%),
+             radial-gradient(circle at 20% 20%, rgba(75, 85, 99, 0.2) 0%, transparent 50%),
+             linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(17, 24, 39, 0.9) 50%, rgba(31, 41, 55, 0.85) 100%)`,
+          ],
+        }}
+        transition={{ duration: 25, repeat: Infinity, repeatType: "reverse" }}
+      />
+
+      {/* Particules magiques */}
+      <div className="fixed inset-0 pointer-events-none">
+        {particles.map((particle) => (
+          <motion.div
+            key={particle.id}
+            className="absolute rounded-full"
+            style={{
+              width: particle.size,
+              height: particle.size,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              background: `radial-gradient(circle, rgba(255,255,255,${particle.opacity}) 0%, transparent 70%)`,
+              boxShadow: `0 0 ${particle.size * 2}px rgba(255,255,255,${particle.opacity * 0.5})`,
+            }}
+            animate={{
+              y: [0, -150, 0],
+              x: [0, Math.random() * 200 - 100, 0],
+              opacity: [0, particle.opacity, 0],
+              scale: [1, 2, 1],
+              rotate: [0, 360, 720],
+            }}
+            transition={{
+              duration: particle.duration,
+              repeat: Infinity,
+              delay: particle.delay,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Grille hexagonale */}
+      <div className="fixed inset-0 opacity-15">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute border border-white/30"
+            style={{
+              width: `${20 + (i % 3) * 10}px`,
+              height: `${20 + (i % 3) * 10}px`,
+              left: `${(i % 6) * 16.66}%`,
+              top: `${Math.floor(i / 6) * 20}%`,
+              clipPath: "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)",
+              filter: `drop-shadow(0 0 ${5 + (i % 3) * 2}px rgba(255,255,255,0.3))`,
+            }}
+            animate={{
+              rotateZ: [0, 360, 720],
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: 20 + i * 3,
+              repeat: Infinity,
+              ease: "linear",
+              delay: i * 0.5,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Hero Section */}
+      <motion.section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center"
+        style={{ y: backgroundY }}
+      >
+        {/* Logo avec effet 3D */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+          style={{
+            rotateX: useTransform(springY, [-10, 10], [10, -10]),
+            rotateY: useTransform(springX, [-10, 10], [-10, 10]),
+          }}
+          initial={{ scale: 0, rotateZ: -180 }}
+          animate={{ scale: 1, rotateZ: 0 }}
+          transition={{ duration: 2, type: "spring", stiffness: 100 }}
+        >
+          <div className="w-32 h-32 bg-gradient-to-br from-white to-gray-300 rounded-full flex items-center justify-center shadow-2xl">
+            <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center">
+              <motion.div
+                className="w-12 h-12 bg-white rounded-full"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </div>
+          </div>
+        </motion.div>
+
+       
+
+        <div className="absolute inset-0 pointer-events-none">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full"
+              style={{
+                left: `${20 + i * 15}%`,
+                top: `${30 + (i % 3) * 20}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.3, 1, 0.3],
+                scale: [1, 2, 1],
+              }}
+              transition={{
+                duration: 4 + i,
+                repeat: Infinity,
+                delay: i * 0.5,
+              }}
+            />
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Services Section */}
+      <section className="py-32 relative">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.h2
+            className="text-5xl md:text-7xl font-bold text-center mb-20"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #e5e7eb 50%, #9ca3af 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Nos Sortilèges Digitaux
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { title: "Stratégie Digitale", description: "Des plans sur mesure pour dominer le digital", icon: "⚡" },
+              { title: "Branding Magique", description: "Créez une identité qui ensorcelle", icon: "✨" },
+              { title: "Réseaux Sociaux", description: "Des campagnes qui captivent vos audiences", icon: "🔮" },
+            ].map((service, i) => (
+              <motion.div
+                key={service.title}
+                className="relative group"
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: i * 0.3 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="relative p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-3xl border border-gray-700/50 backdrop-blur-sm overflow-hidden">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 1 }}
+                  />
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-6">{service.icon}</div>
+                    <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
+                    <p className="text-gray-300 leading-relaxed">{service.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section ref={portfolioRef} className="relative h-[200vh] py-20">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+          <div className="relative z-10 w-full max-w-4xl px-4">
+            <AnimatePresence mode="wait">
+              {projects.map((project, index) => (
+                activeProject === index && (
+                  <motion.div
+                    key={project.id}
+                    className={`p-12 rounded-3xl border border-gray-700/50 backdrop-blur-lg ${project.color}`}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="text-center">
+                      <motion.div className="text-9xl mb-8" initial={{ y: 50 }} animate={{ y: 0 }} transition={{ delay: 0.2 }}>
+                        {project.image}
+                      </motion.div>
+                      <h3 className="text-4xl font-bold mb-4">{project.title}</h3>
+                      <p className="text-xl text-gray-300 mb-6">{project.description}</p>
+                      <div className="flex justify-center gap-3 mb-8">
+                        {project.technologies.map((tech) => (
+                          <span key={tech} className="px-4 py-2 bg-white/10 rounded-full">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-gray-400">Client: {project.client}</p>
+                    </div>
+                  </motion.div>
+                )
+              ))}
+            </AnimatePresence>
+
+            <div className="flex justify-between mt-8 px-4">
+              <button
+                onClick={() => setActiveProject((prev) => Math.max(prev - 1, 0))}
+                className="px-6 py-3 bg-white/10 rounded-full hover:bg-white/20 transition"
+                disabled={activeProject === 0}
+              >
+                Précédent
+              </button>
+              <div className="flex gap-2">
+                {projects.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveProject(i)}
+                    className={`w-3 h-3 rounded-full transition-all ${i === activeProject ? "bg-white w-6" : "bg-white/30"}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={() => setActiveProject((prev) => Math.min(prev + 1, projects.length - 1))}
+                className="px-6 py-3 bg-white/10 rounded-full hover:bg-white/20 transition"
+                disabled={activeProject === projects.length - 1}
+              >
+                Suivant
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services - Bento Grid */}
+      <section className="py-32 px-8 max-w-7xl mx-auto">
+        <motion.h2
+          className="text-5xl md:text-7xl font-bold text-center mb-20"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          style={{
+            background: "linear-gradient(135deg, #ffffff 0%, #e5e7eb 50%, #9ca3af 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Nos Services Magiques
+        </motion.h2>
+
+        <div className="grid grid-cols-4 grid-rows-3 gap-4 h-[80vh]">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className={`relative rounded-2xl border border-gray-700/30 p-6 backdrop-blur-sm overflow-hidden ${
+                service.size === "small" ? "col-span-1 row-span-1" : service.size === "medium" ? "col-span-2 row-span-1" : "col-span-3 row-span-2"
+              } ${service.color}`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+              <div className="relative z-10 h-full flex flex-col">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
+                <p className="text-gray-300">{service.description}</p>
+                {service.size === "large" && (
+                  <motion.button
+                    className="mt-auto px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white font-medium w-fit"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    En savoir plus
+                  </motion.button>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Portfolio avec effet sticky scroll */}
+      <section className="relative bg-gradient-to-b from-gray-900/50 to-black">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.h2
+            className="text-5xl md:text-7xl font-bold text-center py-20"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #e5e7eb 50%, #9ca3af 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Nos Œuvres Enchantées
+          </motion.h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 min-h-screen">
+            <div className="relative">
+              <div className="sticky top-20 space-y-8">
+                {[
+                  { id: 1, image: "🎨", color: "from-purple-500/20 to-blue-500/20", accent: "border-purple-500/30" },
+                  { id: 2, image: "🚀", color: "from-blue-500/20 to-cyan-500/20", accent: "border-blue-500/30" },
+                  { id: 3, image: "💎", color: "from-emerald-500/20 to-teal-500/20", accent: "border-emerald-500/30" },
+                  { id: 4, image: "⚡", color: "from-yellow-500/20 to-orange-500/20", accent: "border-yellow-500/30" },
+                  { id: 5, image: "🔮", color: "from-pink-500/20 to-rose-500/20", accent: "border-pink-500/30" },
+                ].map((project, i) => (
+                  <motion.div
+                    key={project.id}
+                    className={`relative h-80 bg-gradient-to-br ${project.color} rounded-3xl border ${project.accent} backdrop-blur-sm overflow-hidden group`}
+                    initial={{ opacity: 0, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: i * 0.2 }}
+                    whileHover={{ scale: 1.02, rotateY: 5 }}
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                      initial={{ x: "-100%" }}
+                      animate={{ x: "100%" }}
+                      transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                    />
+                    <div className="absolute inset-0">
+                      {Array.from({ length: 8 }).map((_, j) => (
+                        <motion.div
+                          key={j}
+                          className="absolute w-1 h-1 bg-white rounded-full opacity-60"
+                          style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
+                          animate={{ y: [0, -20, 0], opacity: [0.3, 1, 0.3], scale: [1, 1.5, 1] }}
+                          transition={{ duration: 3 + j * 0.5, repeat: Infinity, delay: j * 0.3 }}
+                        />
+                      ))}
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <motion.div className="text-8xl" animate={{ rotateY: [0, 10, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+                        {project.image}
+                      </motion.div>
+                    </div>
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                      <div className="text-center">
+                        <h3 className="text-2xl font-bold text-white mb-2">Projet {project.id}</h3>
+                        <p className="text-gray-300">Cliquez pour voir plus</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-32">
+              {[
+                {
+                  title: "Révolution E-commerce",
+                  client: "TechStyle Fashion",
+                  year: "2024",
+                  description: "Transformation complète d'une boutique en ligne avec une augmentation de 300% des conversions. Interface moderne, checkout optimisé et expérience utilisateur repensée.",
+                  technologies: ["React", "Node.js", "Stripe", "MongoDB"],
+                  results: ["300% d'augmentation des conversions", "50% de réduction du taux de rebond", "2M€ de revenus supplémentaires"],
+                  color: "from-purple-500/10 to-blue-500/10",
+                  accent: "border-purple-500/20",
+                },
+                {
+                  title: "Application Mobile Révolutionnaire",
+                  client: "StartUp Innovante",
+                  year: "2024",
+                  description: "Développement d'une application mobile native avec fonctionnalités AI pour 50K+ utilisateurs actifs. Interface intuitive et performance optimisée.",
+                  technologies: ["React Native", "Python", "TensorFlow", "AWS"],
+                  results: ["50K+ utilisateurs actifs", "4.8/5 étoiles sur les stores", "500K téléchargements"],
+                  color: "from-blue-500/10 to-cyan-500/10",
+                  accent: "border-blue-500/20",
+                },
+                {
+                  title: "Plateforme SaaS Complète",
+                  client: "Enterprise Solutions",
+                  year: "2024",
+                  description: "Création d'une plateforme SaaS B2B complète avec dashboard analytique, gestion multi-tenant et intégrations API avancées.",
+                  technologies: ["Vue.js", "Laravel", "PostgreSQL", "Redis"],
+                  results: ["1000+ entreprises clientes", "99.9% de disponibilité", "500% ROI pour le client"],
+                  color: "from-emerald-500/10 to-teal-500/10",
+                  accent: "border-emerald-500/20",
+                },
+                {
+                  title: "Marketplace Innovante",
+                  client: "GreenTech Corp",
+                  year: "2024",
+                  description: "Développement d'une marketplace écologique avec système de matching intelligent et paiements sécurisés. Architecture scalable et moderne.",
+                  technologies: ["Next.js", "GraphQL", "Prisma", "Vercel"],
+                  results: ["10K+ vendeurs actifs", "1M+ produits référencés", "15M€ de transactions"],
+                  color: "from-yellow-500/10 to-orange-500/10",
+                  accent: "border-yellow-500/20",
+                },
+                {
+                  title: "Expérience Immersive AR/VR",
+                  client: "Future Media",
+                  year: "2024",
+                  description: "Création d'une expérience immersive en réalité augmentée pour événements. Interface 3D interactive et performances temps réel optimisées.",
+                  technologies: ["Three.js", "WebXR", "WebGL", "TypeScript"],
+                  results: ["100K+ interactions AR", "95% de satisfaction utilisateur", "Innovation Award 2024"],
+                  color: "from-pink-500/10 to-rose-500/10",
+                  accent: "border-pink-500/20",
+                },
+              ].map((project, i) => (
+                <motion.div
+                  key={i}
+                  className={`relative p-12 bg-gradient-to-br ${project.color} rounded-3xl border ${project.accent} backdrop-blur-sm overflow-hidden`}
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 1 }}
+                  />
+                  <div className="absolute top-8 right-8 text-6xl font-black text-white/10">{String(i + 1).padStart(2, "0")}</div>
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">{project.client}</span>
+                      <span className="text-sm font-medium text-gray-400">{project.year}</span>
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">{project.title}</h3>
+                    <p className="text-lg text-gray-300 mb-8 leading-relaxed">{project.description}</p>
+                    <div className="mb-8">
+                      <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Technologies</h4>
+                      <div className="flex flex-wrap gap-3">
+                        {project.technologies.map((tech, j) => (
+                          <motion.span
+                            key={j}
+                            className="px-4 py-2 bg-white/10 rounded-full text-sm font-medium text-white border border-white/20"
+                            whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.2)" }}
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Résultats</h4>
+                      <div className="space-y-3">
+                        {project.results.map((result, j) => (
+                          <motion.div
+                            key={j}
+                            className="flex items-center text-gray-300"
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: j * 0.1 }}
+                          >
+                            <div className="w-2 h-2 bg-white rounded-full mr-4 flex-shrink-0" />
+                            <span className="text-sm">{result}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                    <motion.button
+                      className="mt-8 px-8 py-3 bg-white/10 border border-white/20 rounded-full text-white font-medium hover:bg-white/20 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Voir le projet complet
+                    </motion.button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Témoignages */}
+      <section className="py-32">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.h2
+            className="text-5xl md:text-7xl font-bold text-center mb-20"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #e5e7eb 50%, #9ca3af 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Ce Que Nos Clients Disent
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {[
+              { text: "Sorci Digit a transformé notre présence en ligne !", author: "Marie Dubois" },
+              { text: "Des résultats magiques en un temps record.", author: "Pierre Martin" },
+            ].map((testimonial, i) => (
+              <motion.div
+                key={i}
+                className="relative p-8 bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-3xl border border-gray-700/30 backdrop-blur-sm"
+                initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: i * 0.3 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-6xl text-gray-600 mb-4">"</div>
+                <p className="text-xl text-gray-300 italic mb-6 leading-relaxed">{testimonial.text}</p>
+                <p className="text-white font-semibold">— {testimonial.author}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-16 bg-gradient-to-t from-black to-gray-900">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="w-20 h-20 bg-gradient-to-br from-white to-gray-300 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                <div className="w-6 h-6 bg-white rounded-full" />
+              </div>
+            </div>
+            <p className="text-gray-400 mb-8">© 2025 Sorci Digit. Tous droits réservés.</p>
+            <div className="flex justify-center space-x-8">
+              {["Accueil", "Services", "Portfolio", "Contact"].map((link) => (
+                <motion.a
+                  key={link}
+                  href={`#${link.toLowerCase()}`}
+                  className="text-gray-400 hover:text-white transition-colors duration-300"
+                  whileHover={{ y: -2, scale: 1.1 }}
+                >
+                  {link}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Home;
+
+
+
+
+
+export default function Home() {
+  return (
+    <div>
+      <h1 className="cursive-text">Bienvenue sur TEKIYO</h1>
+      <div className="cursive-text" style={{ fontSize: '24px' }}>
+      Texte en style cursif avec Dancing Script !
+    </div>
+      <p>Contenu principal avec Inter...</p>
+    </div>
+  )
+}
+
+
+
+
+  <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-900 flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Blobs animés en arrière-plan */}
+      <motion.div
+        className="absolute w-64 h-64 bg-blue-400 rounded-full filter blur-3xl opacity-40 z-[-1]"
+        style={{ top: '10%', left: '20%' }}
+        animate={{
+          scale: [1, 1.2, 1],
+          x: [0, 50, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute w-96 h-96 bg-purple-400 rounded-full filter blur-3xl opacity-40 z-[-1]"
+        style={{ bottom: '15%', right: '15%' }}
+        animate={{
+          scale: [1, 1.3, 1],
+          x: [0, -40, 0],
+          y: [0, 20, 0],
+        }}
+        transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut' }}
+      />
+
+      {/* Titre principal */}
+      <motion.h1
+        className="text-2xl md:text-5xl lg:text-7xl font-georgia font-bold mb-6 text-black dark:text-white drop-shadow-2xl leading-tight text-center px-4"
+        variants={titleVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        Propulsez votre présence digitale à un niveau totalement{' '}
+        <span className="font-georgia italic">inégalé</span>
+      </motion.h1>
+
+      {/* Sous-titre */}
+      <motion.p
+        className="text-lg md:text-xl font-georgia text-gray-700 dark:text-gray-200 mb-8 text-center px-4 max-w-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        Transformez votre vision en réalité avec des solutions digitales sur mesure.
+      </motion.p>
+
+      {/* Boutons CTA */}
+      <motion.div
+        className="flex flex-col md:flex-row gap-4 mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
+        <button className="px-6 py-3 bg-blue-600 text-white font-georgia rounded-full hover:bg-blue-700 transition-colors duration-300">
+          Découvrir nos services
+        </button>
+        <button className="px-6 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-300 dark:border-blue-300 font-georgia rounded-full hover:bg-blue-600 hover:text-white dark:hover:bg-blue-300 dark:hover:text-gray-900 transition-colors duration-300">
+          Nous contacter
+        </button>
+      </motion.div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="w-6 h-10 border-2 border-gray-800 dark:border-gray-200 rounded-full flex justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        <motion.div
+          className="w-1 h-3 bg-gray-800 dark:bg-gray-200 rounded-full mt-2"
+          variants={scrollIndicatorVariants}
+          animate="pulse"
+        />
+      </motion.div>
+    </div>

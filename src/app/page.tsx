@@ -1,212 +1,280 @@
-'use client'
-import React, { useState, useEffect } from 'react';
+// "use client"
+// import React from 'react';
+// import { motion } from 'framer-motion';
 
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
+// export default function Home() {
+//   // Variants pour l'animation du titre
+//   const titleVariants = {
+//     hidden: { opacity: 0, y: 20 },
+//     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+//   };
 
-const CountdownLaunchPage = () => {
-  // Date de lancement - modifiez cette date selon vos besoins
-  const launchDate = new Date('2025-06-10T00:00:00').getTime(); // Lancement dans une semaine
-  
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-  
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+//   // Variants pour l'animation du scroll indicator
+//   const scrollIndicatorVariants = {
+//     pulse: {
+//       scale: [1, 1.2, 1],
+//       y: [0, 5, 0],
+//       transition: { repeat: Infinity, duration: 1.5, ease: 'easeInOut' },
+//     },
+//   };
 
-  useEffect(() => {
-    // Détection du thème de l'appareil
-    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(prefersDarkMode);
+//   return (
+//     <>
+//       <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-800 dark:to-gray-900 flex flex-col items-center justify-center relative overflow-hidden">
+//         <motion.div
+//           className="absolute w-64 h-64 bg-blue-400 rounded-full filter blur-3xl opacity-40 z-[-1]"
+//           style={{ top: '10%', left: '20%' }}
+//           animate={{
+//             scale: [1, 1.2, 1],
+//             x: [0, 50, 0],
+//             y: [0, 30, 0],
+//           }}
+//           transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
+//         />
+//         <motion.div
+//           className="absolute w-96 h-96 bg-purple-400 rounded-full filter blur-3xl opacity-40 z-[-1]"
+//           style={{ bottom: '15%', right: '15%' }}
+//           animate={{
+//             scale: [1, 1.3, 1],
+//             x: [0, -40, 0],
+//             y: [0, 20, 0],
+//           }}
+//           transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut' }}
+//         />
 
-    // Écoute des changements de thème de l'appareil
-    const handleChange = (event: MediaQueryListEvent) => {
-      setIsDarkMode(event.matches);
-    };
+//         <motion.h1
+//           className=" max-w-xl text-2xl md:text-5xl lg:text-7xl font-georgia font-bold mb-6 text-black dark:text-white drop-shadow-2xl leading-tight text-center px-4"
+//           variants={titleVariants}
+//           initial="hidden"
+//           animate="visible"
+//         >
+//           Propulsez votre présence digitale à un niveau totalement{' '}
+//           <span className="serif italic">inégalé</span>
+//         </motion.h1>
+//       {/* Sous-titre */}
+//       <motion.p
+//         className="max-w-xl text-lg md:text-xl font-georgia text-gray-700 dark:text-gray-200 mb-8 text-center px-4 max-w-2xl"
+//         initial={{ opacity: 0, y: 20 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         transition={{ duration: 0.8, delay: 0.2 }}
+//       >
+//       Révolutionnez votre impact digital avec des stratégies créatives explosives, un design qui déchire et une visibilité web qui propulse votre marque au sommet
+//       </motion.p>
+//        {/* Boutons CTA */}
+//        <motion.div
+//         className="flex flex-col md:flex-row gap-4 mb-12"
+//         initial={{ opacity: 0, y: 20 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         transition={{ duration: 0.8, delay: 0.4 }}
+//       >
+//         <button className="px-6 py-3 bg-blue-600 text-white font-georgia rounded-full hover:bg-blue-700 transition-colors duration-300">
+//           Découvrir nos services
+//         </button>
+//         <button className="px-6 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-300 dark:border-blue-300 font-georgia rounded-full hover:bg-blue-600 hover:text-white dark:hover:bg-blue-300 dark:hover:text-gray-900 transition-colors duration-300">
+//           Nous contacter
+//         </button>
+//       </motion.div>
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', handleChange);
+//       {/* Scroll Indicator */}
+//       <motion.div
+//         className="w-6 h-10 border-2 border-gray-800 dark:border-gray-200 rounded-full flex justify-center"
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         transition={{ duration: 0.8, delay: 0.6 }}
+//       >
+//         <motion.div
+//           className="w-1 h-3 bg-gray-800 dark:bg-gray-200 rounded-full mt-2"
+//           variants={scrollIndicatorVariants}
+//           animate="pulse"
+//         />
+//       </motion.div>
+//       </div>
+//     </>
+//   );
+// };
 
-    return () => {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', handleChange);
-    };
-  }, []);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = launchDate - now;
-      
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-        
-        setTimeLeft({ days, hours, minutes, seconds });
-        
-        // Animation sur changement de seconde
-        setIsAnimating(true);
-        setTimeout(() => setIsAnimating(false), 200);
-      } else {
-        clearInterval(timer);
-        // Gérer le cas où le lancement est passé
-      }
-    }, 1000);
 
-    return () => clearInterval(timer);
-  }, [launchDate]);
+// app/page.tsx
+"use client"
+import { TextAnimate } from '@/components/magicui/text-animate';
+import { AnimatePresence, motion } from 'framer-motion';
 
-  const TimeCard = ({ value, label }: { value: number; label: string }) => (
-    <div className="relative group">
-      <div className={`
-        ${isDarkMode ? 'bg-black/10 border-white/20 text-white' : 'bg-white/10 border-black/20 text-black'}
-        backdrop-blur-lg rounded-2xl p-4 sm:p-6 
-        shadow-2xl transform transition-all duration-300 hover:scale-105
-        ${isAnimating ? 'animate-pulse' : ''}
-      `}>
-        <div className="text-4xl sm:text-5xl md:text-6xl font-bold font-mono">
-          {value.toString().padStart(2, '0')}
-        </div>
-        <div className="text-sm md:text-base uppercase tracking-wider font-medium">
-          {label}
-        </div>
-      </div>
-      <div className="absolute -inset-1 bg-gradient-to-r from-gray-500 to-gray-700 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-sm -z-10"></div>
-    </div>
-  );
-
+export default function Home() {
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'} relative overflow-hidden`}>
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-gray-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 bg-gray-700/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-gray-600/20 rounded-full blur-3xl animate-pulse delay-500"></div>
-      </div>
-
-      {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
-        {/* Logo/Brand */}
-        <div className="mb-6 sm:mb-8">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-gray-500 to-gray-700 rounded-2xl flex items-center justify-center mb-2 sm:mb-4 transform hover:rotate-12 transition-transform duration-300">
-            <div className="text-xl sm:text-2xl font-bold">🚀</div>
-          </div>
+    <>
+      {/* Hero Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="relative py-6 md:py-12 h-screen rounded-b-[64px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-white/90 via-gray-50 to-white"
+      >
+        {/* Animated Background Blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            className="absolute w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-30"
+            animate={{
+              y: [0, 50, 0],
+              x: [0, -50, 0],
+              rotate: [0, 90, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            style={{ top: '10%', left: '5%' }}
+          />
+          <motion.div
+            className="absolute w-80 h-80 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-30"
+            animate={{
+              y: [0, -60, 0],
+              x: [0, 60, 0],
+              rotate: [0, -90, 0],
+              scale: [1.2, 1, 1.2]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            style={{ bottom: '10%', right: '5%' }}
+          />
+          <motion.div
+            className="absolute w-72 h-72 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mix-blend-multiply filter blur-xl opacity-25"
+            animate={{
+              y: [0, 30, 0],
+              x: [0, -30, 0],
+              rotate: [0, 45, 0]
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+          />
         </div>
 
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent"
-            style={{ backgroundImage: isDarkMode ? 'linear-gradient(to right, white, gray)' : 'linear-gradient(to right, black, gray)' }}>
-          Quelque chose d'incroyable
-          <br />
-          <span className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl">arrive bientôt</span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed"
-           style={{ color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)' }}>
-          Nous préparons une expérience extraordinaire qui va révolutionner votre façon de travailler. 
-          Restez connectés pour le grand lancement !
-        </p>
-
-        {/* Countdown */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-12">
-          <TimeCard value={timeLeft.days} label="Jours" />
-          <TimeCard value={timeLeft.hours} label="Heures" />
-          <TimeCard value={timeLeft.minutes} label="Minutes" />
-          <TimeCard value={timeLeft.seconds} label="Secondes" />
-        </div>
-
-        {/* CTA Section */}
-        <div className="space-y-4 sm:space-y-6">
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">
-            <button className="px-6 py-3 sm:px-8 sm:py-4 font-semibold rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                    style={{ backgroundImage: isDarkMode ? 'linear-gradient(to right, gray, black)' : 'linear-gradient(to right, gray, white)', color: isDarkMode ? 'white' : 'black' }}>
-              Être notifié du lancement
-            </button>
-            <button className="px-6 py-3 sm:px-8 sm:py-4 rounded-xl transform hover:scale-105 transition-all duration-300"
-                    style={{ backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)', color: isDarkMode ? 'white' : 'black', border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.2)' }}>
-              En savoir plus
-            </button>
-          </div>
+        {/* Main Content */}
+        <div className="flex flex-col items-center relative z-10 max-w-5xl mx-auto text-center px-4">
+          {/* Main Heading avec meilleure gestion responsive */}
+          <motion.h1
+            className="max-w-xl text-3xl md:text-5xl lg:text-7xl font-extrabold mb-6 text-black leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
           
-          {/* Email signup */}
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Votre email..."
-              className="flex-1 px-3 py-2 sm:px-4 sm:py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-              style={{ backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)', color: isDarkMode ? 'white' : 'black', border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(0, 0, 0, 0.2)' }}
-            />
-            <button className="px-5 py-2 sm:px-6 sm:py-3 font-semibold rounded-lg transition-all duration-300 whitespace-nowrap"
-                    style={{ backgroundImage: isDarkMode ? 'linear-gradient(to right, gray, black)' : 'linear-gradient(to right, gray, white)', color: isDarkMode ? 'white' : 'black' }}>
-              S'inscrire
-            </button>
-          </div>
-        </div>
+            <TextAnimate animation="blurInUp" by="character" delay={2}  className="text-6xl font-bold dark:text-white text-center">
+            Propulsez votre présence digitale à un niveau
+             </TextAnimate>
+            
+                   
+            <span className="serif-italic text-transparent  bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">inégalé</span>
 
-        {/* Progress bar */}
-        <div className="mt-6 sm:mt-8 md:mt-12 w-full max-w-md">
-          <div className="rounded-full h-1 sm:h-2 overflow-hidden"
-               style={{ backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }}>
-            <div 
-              className="h-full rounded-full transition-all duration-1000 ease-out"
-              style={{ width: '75%', backgroundImage: isDarkMode ? 'linear-gradient(to right, gray, black)' : 'linear-gradient(to right, gray, white)' }}
-            ></div>
-          </div>
-          <p className="text-sm mt-1 sm:mt-2" style={{ color: isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)' }}>75% terminé</p>
-        </div>
+          </motion.h1>
 
-        {/* Social links */}
-        <div className="mt-4 sm:mt-6 md:mt-8 flex space-x-4 sm:space-x-6">
-          {['Twitter', 'LinkedIn', 'Instagram'].map((social) => (
-            <a 
-              key={social}
-              href="#" 
-              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-              style={{ backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)', color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)' }}
+          {/* Subtitle avec animation */}
+          <motion.p
+            className="max-w-xl text-lg md:text-lg lg:text-xl georgia  mb-12 text-gray-700"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+
+          > 
+          <TextAnimate animation="blurInUp" by="character" delay={2}>
+            Révolutionnez votre impact digital avec des stratégies créatives explosives, un design qui déchire et une visibilité web qui propulse votre marque au sommet
+          
+             </TextAnimate>
+
+{/* 
+            <TextAnimate animation="blurInUp" by="character" delay={2}>
+              Révolutionnez votre impact digital avec des stratégies créatives explosives, un design qui déchire et une visibilité web qui propulse votre marque au sommet
+              </TextAnimate> */}
+          </motion.p>
+
+          {/* CTA Buttons avec hover effects améliorés */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <motion.button
+              className="bg-black text-white font-bold py-4 px-8 md:px-12 rounded-full shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span className="text-xs sm:text-sm font-medium">{social[0]}</span>
-            </a>
+              Réservez un appel
+            </motion.button>
+            <motion.button
+              className="bg-transparent border-2 border-black text-black font-bold py-4 px-8 md:px-12 rounded-full hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Coaching gratuit
+            </motion.button>
+          </motion.div>
+
+          {/* Trust indicators / Social proof */}
+          <motion.div
+            className="mt-16 flex flex-col md:flex-row items-center gap-8 text-sm text-gray-600"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-2">
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-2 border-white"></div>
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full border-2 border-white"></div>
+                <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full border-2 border-white"></div>
+              </div>
+              <span>+100 marques propulsées</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-yellow-500">⭐⭐⭐⭐⭐</span>
+              <span>4.9/5 satisfaction client</span>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator amélioré */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <div className="w-6 h-10 border-2 border-black rounded-full flex justify-center">
+            <motion.div
+              className="w-1 h-3 bg-black rounded-full mt-2"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
+
+        {/* Particules flottantes pour plus de dynamisme */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white rounded-full opacity-30"
+              animate={{
+                y: [0, -100, 0],
+                x: [0, Math.random() * 100 - 50, 0],
+                opacity: [0.3, 0.8, 0.3]
+              }}
+              transition={{
+                duration: 6 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: "easeInOut"
+              }}
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`
+              }}
+            />
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 sm:w-2 sm:h-2 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`,
-              backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'
-            }}
-          ></div>
-        ))}
-      </div>
-
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-          50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
-        }
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-      `}</style>
-    </div>
-  );
-};
-
-export default CountdownLaunchPage;
+    </>
+  )
+}
