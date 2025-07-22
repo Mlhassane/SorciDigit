@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -89,7 +88,7 @@ const Navbar: React.FC = () => {
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-2.5 text-sm text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 font-medium shadow-lg"
             >
-              Get Started
+              Appellez nous
             </Link>
           </motion.div>
         </motion.div>
@@ -123,7 +122,8 @@ const Navbar: React.FC = () => {
           aria-expanded={isOpen}
         >
           <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-          <Menu className="h-6 w-6 text-black relative z-10" />
+          <span className="h-6 w-6 text-black relative z-10" > 
+            Menu </span>
         </motion.button>
       </div>
 
@@ -153,7 +153,8 @@ const Navbar: React.FC = () => {
                 transition={{ delay: 0.3, type: "spring" }}
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl"></div>
-                <X className="h-6 w-6 text-black relative z-10" />
+                <span className="h-6 w-6 text-black relative z-10">
+                  Fermer </span>
               </motion.button>
 
               {/* Menu Content */}
