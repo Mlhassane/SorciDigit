@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-    title: 'Sorci Digit - Agence de Marketing Digital et Communication',
-    description: 'Sorci Digit, votre agence de marketing digital. Boostez votre présence en ligne avec nos services SEO, branding et réseaux sociaux.',
-    keywords: 'marketing digital, SEO, branding, réseaux sociaux, agence communication,Niger, Afrique',
-    authors: [{ name: 'Sorci Digit' }],
+  title: 'Sorci Digit - Agence de Marketing Digital et Communication',
+  description: 'Sorci Digit, votre agence de marketing digital. Boostez votre présence en ligne avec nos services SEO, branding et réseaux sociaux.',
+  keywords: 'marketing digital, SEO, branding, réseaux sociaux, agence communication,Niger, Afrique',
+  authors: [{ name: 'Sorci Digit' }],
 };
 export default function RootLayout({
   children,
@@ -25,13 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
 
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet"/>
+      </head>
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <Navbar/>
+        <Navbar />
         {children}
       </body>
     </html>
