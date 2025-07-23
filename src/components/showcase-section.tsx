@@ -53,13 +53,13 @@ export default function ShowcaseSection() {
   }
 
   const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 40, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.6,
+        ease: "easeInOut",
       },
     },
   }
