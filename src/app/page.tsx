@@ -107,7 +107,6 @@ import { TextAnimate } from '@/components/magicui/text-animate';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Link from 'next/link'
-import ShowcaseSection from '@/components/showcase-section';
 export default function Home() { 
 
   
