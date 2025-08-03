@@ -21,6 +21,7 @@ interface TextAnimateProps extends MotionProps {
   /**
    * The text content to animate
    */
+  font?: string,
   children: string;
   /**
    * The class name to be applied to the component
@@ -308,6 +309,7 @@ const TextAnimateBase = ({
   startOnView = true,
   once = false,
   by = "word",
+  font = '',
   animation = "fadeIn",
   ...props
 }: TextAnimateProps) => {
@@ -383,7 +385,7 @@ const TextAnimateBase = ({
         whileInView={startOnView ? "show" : undefined}
         animate={startOnView ? undefined : "show"}
         exit="exit"
-        className={cn("whitespace-pre-wrap", className)}
+        className={cn("whitespace-pre-wrap ", className)}
         viewport={{ once }}
         {...props}
       >
@@ -392,10 +394,12 @@ const TextAnimateBase = ({
             key={`${by}-${segment}-${i}`}
             variants={finalVariants.item}
             custom={i * staggerTimings[by]}
-            className={cn(
+            className={cn( 
+              '',
               by === "line" ? "block" : "inline-block whitespace-pre",
               by === "character" && "",
               segmentClassName,
+              font
             )}
           >
             {segment}

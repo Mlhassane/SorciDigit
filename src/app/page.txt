@@ -1103,18 +1103,6 @@ export default Home;
 
 
 
-export default function Home() {
-  return (
-    <div>
-      <h1 className="cursive-text">Bienvenue sur TEKIYO</h1>
-      <div className="cursive-text" style={{ fontSize: '24px' }}>
-      Texte en style cursif avec Dancing Script !
-    </div>
-      <p>Contenu principal avec Inter...</p>
-    </div>
-  )
-}
-
 
 
 
@@ -1370,3 +1358,350 @@ export default function Home() {
     </>
   )
 }
+
+
+
+
+
+      {/* À propos */}
+      <section className="py-24 px-4 border-t border-white/10 bg-black">
+        <motion.div
+          className="max-w-3xl mx-auto text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.h2 className="text-3xl md:text-4xl font-bold mb-6" variants={fadeUp} custom={0}>À propos</motion.h2>
+          <motion.p className="text-gray-300 text-lg mb-4" variants={fadeUp} custom={1}>
+            Sorci Digit accompagne les entreprises ambitieuses dans leur transformation digitale. Notre équipe réunit des experts passionnés du marketing, du design et de la communication pour propulser votre marque.
+          </motion.p>
+          <motion.p className="text-gray-400 text-base" variants={fadeUp} custom={2}>
+            Notre mission : vous aider à atteindre vos objectifs grâce à des stratégies innovantes, une créativité sans limite et une exécution irréprochable.
+          </motion.p>
+        </motion.div>
+      </section>
+      {/* Services */}
+      <section className="py-24 px-4 border-t border-white/10 bg-black">
+        <motion.div
+          className="max-w-6xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.h2 className="text-3xl md:text-4xl font-bold mb-12 text-center" variants={fadeUp} custom={0}>Nos services</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service, idx) => (
+              <motion.div
+                key={service.title}
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-left shadow-lg hover:scale-[1.05] hover:shadow-2xl transition-transform cursor-pointer"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={idx + 1}
+                whileHover={{ scale: 1.07, boxShadow: "0 8px 32px 0 rgba(0,0,0,0.25)" }}
+              >
+                <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
+                <p className="text-gray-300">{service.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+      {/* Réalisations */}
+      <section className="py-24 px-4 border-t border-white/10 bg-black">
+        <motion.div
+          className="max-w-6xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.h2 className="text-3xl md:text-4xl font-bold mb-12 text-center" variants={fadeUp} custom={0}>Réalisations</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {projects.map((project, idx) => (
+              <motion.div
+                key={project.name}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left shadow-lg flex flex-col hover:scale-[1.05] hover:shadow-2xl transition-transform cursor-pointer"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={idx + 1}
+              >
+                <motion.div
+                  className="h-40 w-full bg-gray-800 rounded-lg mb-4 overflow-hidden flex items-center justify-center group"
+                  whileHover={{ scale: 1.04, rotate: 1 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                >
+                  {/* Image fictive */}
+                  <span className="text-gray-600 text-2xl">Image</span>
+                </motion.div>
+                <h3 className="text-lg font-semibold mb-1 text-white">{project.name}</h3>
+                <p className="text-gray-300 text-sm mb-2">{project.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+      {/* Témoignages */}
+      <section className="py-24 px-4 border-t border-white/10 bg-black">
+        <motion.div
+          className="max-w-4xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.h2 className="text-3xl md:text-4xl font-bold mb-12 text-center" variants={fadeUp} custom={0}>Témoignages</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((t, idx) => (
+              <motion.div
+                key={t.name}
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-left shadow-lg hover:scale-[1.05] hover:shadow-2xl transition-transform cursor-pointer"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={idx + 1}
+                whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(0,0,0,0.25)" }}
+              >
+                <p className="text-gray-200 italic mb-4">“{t.feedback}”</p>
+                <div className="text-gray-400 text-sm font-semibold">{t.name}</div>
+                <div className="text-gray-500 text-xs">{t.company}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+      {/* Contact */}
+      <section id="contact" className="py-24 px-4 border-t border-white/10 bg-black">
+        <motion.div
+          className="max-w-lg mx-auto bg-white/5 border border-white/10 rounded-2xl p-10 shadow-lg"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.h2 className="text-3xl font-bold mb-6 text-center" variants={fadeUp} custom={0}>Contactez-nous</motion.h2>
+          <form className="flex flex-col gap-4">
+            <motion.input
+              type="text"
+              placeholder="Votre nom"
+              className="px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              custom={1}
+            />
+            <motion.input
+              type="email"
+              placeholder="Votre email"
+              className="px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              custom={2}
+            />
+            <motion.textarea
+              placeholder="Votre projet ou question..."
+              className="px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
+              rows={4}
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              custom={3}
+            />
+            <motion.button
+              type="submit"
+              className="w-full bg-white text-black font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-gray-100 transition-colors mt-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              custom={4}
+            >
+              Envoyer ma demande
+            </motion.button>
+          </form>
+          <motion.p className="text-gray-500 text-xs mt-4 text-center" variants={fadeUp} custom={5}>
+            Nous respectons votre vie privée. Vos données ne seront jamais partagées.
+          </motion.p>
+        </motion.div>
+      </section>
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-white/10 bg-black text-center text-gray-400 text-sm">
+        © {new Date().getFullYear()} Sorci Digit. Tous droits réservés.
+      </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <div className="min-h-screen bg-black text-white flex flex-col font-sans">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center flex-1 px-4 py-32 text-center relative overflow-hidden">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-tight text-white/90 flex flex-wrap justify-center gap-2 leading-tight">
+            <motion.span variants={fadeUp} custom={0} className="text-2xl md:text-3xl">🎩</motion.span>
+            <motion.span variants={fadeUp} custom={1}>Sorci</motion.span>
+            <motion.span variants={fadeUp} custom={2}>Digit</motion.span>
+            <motion.span variants={fadeUp} custom={3} className="text-gray-500">—</motion.span>
+            <motion.span variants={fadeUp} custom={4} className="text-gray-300">Le Sorcier Digital</motion.span>
+          </h1>
+          <motion.div
+            variants={fadeUp}
+            custom={5}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-8"
+          >
+            <Link href="#contact" className="inline-block bg-white/90 text-black font-normal px-7 py-3 rounded-full border border-white/20 hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/30">
+              Demander un audit gratuit
+            </Link>
+          </motion.div>
+        </motion.div>
+        {/* Décor minimaliste */}
+        <motion.div
+          className="absolute -top-40 -left-40 w-80 h-80 bg-white/5 rounded-full blur-2xl opacity-30"
+          animate={{ x: [0, 20, 0], y: [0, 30, 0] }}
+          transition={{ duration: 18, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -bottom-40 -right-40 w-80 h-80 bg-white/5 rounded-full blur-2xl opacity-20"
+          animate={{ x: [0, -20, 0], y: [0, -30, 0] }}
+          transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        />
+      </section>
+
+      {/* Présentation générale */}
+      <section className="py-16 px-4 border-t border-white/5 bg-black">
+        <motion.div className="max-w-2xl mx-auto text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.h2 className="text-2xl md:text-3xl font-normal mb-5 text-white/90" variants={fadeUp} custom={0}>🧭 Présentation générale</motion.h2>
+          <motion.p className="text-gray-300 text-base mb-3 font-light" variants={fadeUp} custom={1}>
+            Sorci Digit est une agence de transformation digitale et d’innovation technologique. Elle accompagne les entreprises, les startups, les institutions et les entrepreneurs dans leur passage vers le numérique.
+          </motion.p>
+          <motion.p className="text-gray-400 text-base mb-3 font-light" variants={fadeUp} custom={2}>
+            Nous combinons design, technologie, intelligence artificielle et stratégie pour créer des solutions simples, accessibles et puissantes.
+          </motion.p>
+          <motion.p className="text-gray-200 italic text-lg font-light" variants={fadeUp} custom={3}>
+            Notre ambition : rendre la technologie magique, utile et inclusive.
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* Mission */}
+      <section className="py-12 px-4 border-t border-white/5 bg-black">
+        <motion.div className="max-w-xl mx-auto text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.h2 className="text-xl md:text-2xl font-normal mb-3 text-white/90" variants={fadeUp} custom={0}>🎯 Notre mission</motion.h2>
+          <motion.blockquote className="text-gray-100 text-lg italic border-l-2 border-white/10 pl-4 mb-2 font-light" variants={fadeUp} custom={1}>
+            Simplifier et démocratiser l’accès à la technologie pour permettre à chacun d’améliorer sa productivité, sa visibilité, son impact ou ses revenus grâce au numérique.
+          </motion.blockquote>
+        </motion.div>
+      </section>
+
+      {/* Services */}
+      <section className="py-16 px-4 border-t border-white/5 bg-black">
+        <motion.div className="max-w-3xl mx-auto" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.h2 className="text-2xl md:text-3xl font-normal mb-8 text-center text-white/90" variants={fadeUp} custom={0}>🧩 Nos services</motion.h2>
+          <ol className="grid grid-cols-1 md:grid-cols-2 gap-6 list-decimal list-inside">
+            {services.map((service, idx) => (
+              <motion.li key={service.title} className="bg-white/3 rounded-2xl p-5 text-left font-light text-base text-white/90 hover:bg-white/5 transition-colors" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={idx + 1}>
+                {service.title}
+              </motion.li>
+            ))}
+          </ol>
+        </motion.div>
+      </section>
+
+      {/* Projets phares */}
+      <section className="py-16 px-4 border-t border-white/5 bg-black">
+        <motion.div className="max-w-3xl mx-auto" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.h2 className="text-2xl md:text-3xl font-normal mb-8 text-center text-white/90" variants={fadeUp} custom={0}>🌟 Nos projets phares</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((project, idx) => (
+              <motion.div key={project.name} className="bg-white/3 rounded-2xl p-5 text-left font-light text-base text-white/90 hover:bg-white/5 transition-colors" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={idx + 1}>
+                <h3 className="text-base font-semibold mb-1 text-white/90">{project.name}</h3>
+                <p className="text-gray-300 text-sm mb-1">{project.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Public cible */}
+      <section className="py-12 px-4 border-t border-white/5 bg-black">
+        <motion.div className="max-w-xl mx-auto text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.h2 className="text-xl md:text-2xl font-normal mb-5 text-white/90" variants={fadeUp} custom={0}>🎯 Notre public cible</motion.h2>
+          <ul className="flex flex-col gap-1 items-center">
+            {audience.map((item, idx) => (
+              <motion.li key={item} className="text-base text-gray-200 font-light" variants={fadeUp} custom={idx + 1}>{item}</motion.li>
+            ))}
+          </ul>
+        </motion.div>
+      </section>
+
+      {/* Valeurs */}
+      <section className="py-12 px-4 border-t border-white/5 bg-black">
+        <motion.div className="max-w-2xl mx-auto" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.h2 className="text-xl md:text-2xl font-normal mb-6 text-center text-white/90" variants={fadeUp} custom={0}>🌱 Nos valeurs</motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {values.map((val, idx) => (
+              <motion.div key={val.title} className="bg-white/3 rounded-2xl p-5 text-left font-light text-base text-white/90 hover:bg-white/5 transition-colors" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={idx + 1}>
+                <h3 className="text-base font-semibold mb-1 text-white/90">{val.title}</h3>
+                <p className="text-gray-300 text-sm">{val.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Vision */}
+      <section className="py-12 px-4 border-t border-white/5 bg-black">
+        <motion.div className="max-w-xl mx-auto text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.h2 className="text-xl md:text-2xl font-normal mb-3 text-white/90" variants={fadeUp} custom={0}>🚀 Notre vision</motion.h2>
+          <motion.blockquote className="text-gray-100 text-lg italic border-l-2 border-white/10 pl-4 mb-2 font-light" variants={fadeUp} custom={1}>
+            Faire de Sorci Digit le partenaire numérique de référence en Afrique francophone pour tous ceux qui veulent innover, automatiser et impacter.
+          </motion.blockquote>
+        </motion.div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-20 px-4 border-t border-white/5 bg-black">
+        <motion.div className="max-w-md mx-auto bg-white/2 rounded-2xl p-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <motion.h2 className="text-2xl font-normal mb-5 text-center text-white/90" variants={fadeUp} custom={0}>Contactez-nous</motion.h2>
+          <form className="flex flex-col gap-3">
+            <motion.input type="text" placeholder="Votre nom" className="px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light" initial="hidden" animate="visible" variants={fadeUp} custom={1} />
+            <motion.input type="email" placeholder="Votre email" className="px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light" initial="hidden" animate="visible" variants={fadeUp} custom={2} />
+            <motion.textarea placeholder="Votre projet ou question..." className="px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light" rows={4} initial="hidden" animate="visible" variants={fadeUp} custom={3} />
+            <motion.button type="submit" className="w-full bg-white/90 text-black font-normal px-7 py-3 rounded-full border border-white/20 hover:bg-white transition-colors mt-2 focus:outline-none focus:ring-2 focus:ring-white/30" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} initial="hidden" animate="visible" variants={fadeUp} custom={4}>
+              Envoyer ma demande
+            </motion.button>
+          </form>
+          <motion.p className="text-gray-500 text-xs mt-4 text-center" variants={fadeUp} custom={5}>
+            Nous respectons votre vie privée. Vos données ne seront jamais partagées.
+          </motion.p>
+        </motion.div>
+      </section>
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-white/5 bg-black text-center text-gray-500 text-xs tracking-wide">
+        © {new Date().getFullYear()} Sorci Digit. Tous droits réservés.
+      </footer>
+    </div>
