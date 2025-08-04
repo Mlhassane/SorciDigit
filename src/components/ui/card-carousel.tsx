@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -60,7 +61,12 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   return (
     <section className="w-ace-y-4">
       <style>{css}</style>
-      <div className="border-secondary/50 mx-auto w-full max-w-4xl rounded-[24px] border p-2 shadow-sm md:rounded-t-[44px]">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        className="border-secondary/50 mx-auto w-full max-w-4xl rounded-[24px] border p-2 shadow-sm md:rounded-t-[44px]"
+      >
         <div className="from-secondary/10 to-card relative mx-auto flex w-full flex-col rounded-[24px] border bg-gradient-to-b p-2 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset] md:items-start md:gap-8 md:rounded-t-[40px] md:rounded-b-[20px] md:p-2">
           <div className="flex flex-col justify-center pt-14 pb-2 pl-4 md:items-center">
             <div className="flex gap-2">
@@ -103,15 +109,20 @@ export const CardCarousel: React.FC<CarouselProps> = ({
               >
                 {images.map((image, index) => (
                   <SwiperSlide key={index}>
-                    <div className="size-full rounded-3xl">
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="size-full rounded-3xl flex items-center justify-center"
+                    >
                       <img
                         src={image.src}
                         width={500}
                         height={500}
-                        className="size-full rounded-xl"
+                        className="rounded-xl w-full h-auto max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl"
                         alt={image.alt}
                       />
-                    </div>
+                    </motion.div>
                   </SwiperSlide>
                 ))}
                 {images.map((image, index) => (
@@ -131,7 +142,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
