@@ -35,7 +35,7 @@ export default function Footer() {
                 <Twitter className="h-5 w-5" />
               </Link>
               <Link
-                href="https://instagram.com/sorcidigit"
+                href="https://instagram.com/sorci_digit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
@@ -50,16 +50,9 @@ export default function Footer() {
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
+             
               <Link
-                href="https://github.com/sorcidigit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
-              >
-                <Github className="h-5 w-5" />
-              </Link>
-              <Link
-                href="https://wa.me/22790000000"
+                href="https://wa.me/22777042181"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative group"
