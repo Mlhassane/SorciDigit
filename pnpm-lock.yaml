@@ -20,6 +20,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      embla:
+        specifier: ^1.0.0
+        version: 1.0.0
       framer-motion:
         specifier: ^12.23.5
         version: 12.23.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -413,6 +416,9 @@ packages:
   detect-libc@2.0.4:
     resolution: {integrity: sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==}
     engines: {node: '>=8'}
+
+  embla@1.0.0:
+    resolution: {integrity: sha512-wD1KgDCqL7LAyywaO5H/36ajvq7aLTyOnJnT7sx0UiAjnmtCEIfhQKtX1V/rH6wpOraNaZ1hxXWs+2kM8aaIZw==}
 
   enhanced-resolve@5.18.1:
     resolution: {integrity: sha512-ZSW3ma5GkcQBIpwZTSRAI8N71Uuwgs93IezB7mf7R60tC8ZbJideoDNKjHn2O9KIlx6rkGTTEk1xUCK2E1Y2Yg==}
@@ -921,6 +927,8 @@ snapshots:
   csstype@3.1.3: {}
 
   detect-libc@2.0.4: {}
+
+  embla@1.0.0: {}
 
   enhanced-resolve@5.18.1:
     dependencies:
