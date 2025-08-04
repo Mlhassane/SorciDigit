@@ -1,5 +1,6 @@
-import { Github, Heart, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Github, Instagram, Linkedin, Twitter,  } from 'lucide-react';
 import Link from 'next/link';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -22,12 +23,11 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-muted-foreground mb-4">
-           
+              Nous créons des expériences digitales puissantes et mémorables.
             </p>
             <div className="flex space-x-3">
-            
               <Link
-                href="https://x.com/mvp_Subha"
+                href="https://twitter.com/sorcidigit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
@@ -35,7 +35,7 @@ export default function Footer() {
                 <Twitter className="h-5 w-5" />
               </Link>
               <Link
-                href="https://instagram.com/mvp_Subha"
+                href="https://instagram.com/sorcidigit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
@@ -43,27 +43,44 @@ export default function Footer() {
                 <Instagram className="h-5 w-5" />
               </Link>
               <Link
-                href="https://linkedin.com/in/subhadeep3902"
+                href="https://linkedin.com/company/sorcidigit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
+              <Link
+                href="https://github.com/sorcidigit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
+              >
+                <Github className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://wa.me/22790000000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group"
+              >
+                <div className="p-2 rounded-full bg-green-500 hover:bg-green-600 text-white animate-pulse shadow-lg transition duration-300 ease-in-out">
+                  <FaWhatsapp className="h-5 w-5" />
+                </div>
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all text-xs text-muted-foreground">
+                  Discuter sur WhatsApp
+                </span>
+              </Link>
             </div>
           </div>
-        
-        
         </div>
         <div className="border-muted/50 relative border-t pt-8">
           <div className="via-primary/70 absolute top-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent"></div>
           <div className="text-muted-foreground flex flex-col items-center justify-between text-sm md:flex-row">
             <p>
               ©{new Date().getFullYear()}{' '}
-              <span className="text-foreground font-medium">Sorci Digit</span>.
-              All rights reserved.
+              <span className="text-foreground font-medium">Sorci Digit</span>. Tous droits réservés.
             </p>
-           
           </div>
         </div>
       </div>
