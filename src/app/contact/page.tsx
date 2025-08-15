@@ -1,8 +1,9 @@
+
 "use client"
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 
 const contactMethods = [
   {
@@ -50,7 +51,7 @@ const fadeUp = {
 const staggerContainer = {
   hidden: {},
   visible: {
-    transitionreading: {
+    transition: {
       staggerChildren: 0.15,
     },
   },
@@ -61,16 +62,44 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [formError, setFormError] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     setFormError("")
-    
-    // Simulated form submission
+
+    // Collect form data
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      firstName: formData.get("firstName") as string,
+      lastName: formData.get("lastName") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      company: formData.get("company") as string,
+      service: formData.get("service") as string,
+      budget: formData.get("budget") as string,
+      project: formData.get("project") as string,
+    }
+
+    // Simulated form submission (replace with your API call)
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      setTimeout(() => setIsSubmitted(false), 3000)
+      try {
+        // Log form data for debugging (remove in production)
+        console.log("Form data:", data)
+        // Example API call:
+        // await fetch('/api/contact', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify(data),
+        // })
+        setIsSubmitted(true)
+        setTimeout(() => setIsSubmitted(false), 3000)
+        // Reset form after submission
+        e.currentTarget.reset()
+      } catch (error) {
+        setFormError("Une erreur est survenue lors de l'envoi du formulaire.")
+      } finally {
+        setIsSubmitting(false)
+      }
     }, 1000)
   }
 
@@ -130,7 +159,7 @@ export default function ContactPage() {
                 <h3 className="text-lg font-semibold mb-2 text-white/90">{method.title}</h3>
                 <a 
                   href={method.href}
-                  className="text-gray-300 font-light mb-2 hover:text-white transition-colors inline-block"
+                  className="text-gray-300 font-light mb-2 hover:text-white transition-colors duration-300 inline-block"
                   aria-label={`Contactez-nous via ${method.title}`}
                 >
                   {method.value}
@@ -161,8 +190,9 @@ export default function ContactPage() {
           
           {isSubmitted && (
             <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
               className="bg-green-500/10 border border-green-500/20 rounded-lg p-4 mb-6 text-green-400 text-center"
             >
               Message envoyé avec succès ! Nous vous répondrons sous 24h.
@@ -171,8 +201,9 @@ export default function ContactPage() {
 
           {formError && (
             <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
               className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 mb-6 text-red-400 text-center"
             >
               {formError}
@@ -187,6 +218,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   id="firstName"
+                  name="firstName"
                   type="text"
                   required
                   className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light transition-all duration-300"
@@ -200,6 +232,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   id="lastName"
+                  name="lastName"
                   type="text"
                   required
                   className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light transition-all duration-300"
@@ -215,6 +248,7 @@ export default function ContactPage() {
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 required
                 className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light transition-all duration-300"
@@ -229,9 +263,10 @@ export default function ContactPage() {
               </label>
               <input
                 id="phone"
+                name="phone"
                 type="tel"
                 className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light transition-all duration-300"
-                placeholder="+33 6 12 34 56 78"
+                placeholder="+227 77042181"
               />
             </motion.div>
 
@@ -241,6 +276,7 @@ export default function ContactPage() {
               </label>
               <input
                 id="company"
+                name="company"
                 type="text"
                 className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light transition-all duration-300"
                 placeholder="Nom de votre entreprise"
@@ -253,6 +289,7 @@ export default function ContactPage() {
               </label>
               <select
                 id="service"
+                name="service"
                 required
                 className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-white/20 font-light transition-all duration-300"
                 aria-required="true"
@@ -270,6 +307,7 @@ export default function ContactPage() {
               </label>
               <select
                 id="budget"
+                name="budget"
                 className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-white/20 font-light transition-all duration-300"
               >
                 <option value="">Sélectionnez une fourchette</option>
@@ -287,6 +325,7 @@ export default function ContactPage() {
               </label>
               <textarea
                 id="project"
+                name="project"
                 required
                 rows={6}
                 className="w-full px-4 py-3 rounded-lg bg-black border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 font-light transition-all duration-300"
