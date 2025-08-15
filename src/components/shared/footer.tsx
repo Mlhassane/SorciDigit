@@ -27,7 +27,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-3">
               <Link
-                href="https://twitter.com/sorcidigit"
+                href="https://twitter.com/sorci_digit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
@@ -43,7 +43,7 @@ export default function Footer() {
                 <Instagram className="h-5 w-5" />
               </Link>
               <Link
-                href="https://linkedin.com/company/sorcidigit"
+                href="https://www.linkedin.com/company/sorci-digit/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BDrPDXa9lQDet8fARhqsEAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
