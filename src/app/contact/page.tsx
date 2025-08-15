@@ -115,7 +115,7 @@ export default function ContactPage() {
         >
           <motion.h1 
             className="text-4xl md:text-5xl font-light mb-6 text-white/90 tracking-tight"
-            variants={fadeUp}
+
             custom={0}
           >
             Contactez-nous
@@ -141,7 +141,7 @@ export default function ContactPage() {
         >
           <motion.h2 
             className="text-2xl font-normal mb-8 text-center text-white/90"
-            variants={fadeUp}
+   
             custom={0}
           >
             Nos Coordonnées
@@ -182,7 +182,7 @@ export default function ContactPage() {
         >
           <motion.h2 
             className="text-2xl font-normal mb-8 text-center text-white/90"
-            variants={fadeUp}
+       
             custom={0}
           >
             Envoyez-nous un message
