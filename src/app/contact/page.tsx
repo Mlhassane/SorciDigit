@@ -30,7 +30,7 @@ const contactMethods = [
 ]
 
 const services = [
-  "Création d'applications web & mobiles",
+  "Création d'applications web & mobiles ",
   "Digitalisation & automatisation",
   "Solutions AgriTech",
   "Sites vitrines & e-commerce",
