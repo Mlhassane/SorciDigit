@@ -15,7 +15,7 @@ const contactMethods = [
   {
     title: "Téléphone",
     value: "+227 77042181",
-    desc: "Du lundi au vendredi, 9h-18h",
+    desc: "Du lundi au samedi, 9h-18h",
     icon: "📞",
     href: "tel:+22777042181"
   },
