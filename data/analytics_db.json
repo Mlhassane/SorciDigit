@@ -1,0 +1,82 @@
+[
+  {
+    "type": "web-vital",
+    "url": "http://localhost:3001/dashboard",
+    "referrer": "http://localhost:3001/dashboard",
+    "timestamp": "2026-01-05T06:52:47.324Z",
+    "os": "Windows",
+    "browser": "Chrome",
+    "device": "desktop",
+    "screen_size": "2048x1018",
+    "vital_name": "FCP",
+    "vital_value": 6436,
+    "ip": "::1",
+    "country": "NE"
+  },
+  {
+    "type": "pageview",
+    "url": "http://localhost:3001/dashboard",
+    "referrer": "http://localhost:3001/dashboard",
+    "timestamp": "2026-01-05T06:52:47.730Z",
+    "os": "Windows",
+    "browser": "Chrome",
+    "device": "desktop",
+    "screen_size": "2048x1018",
+    "ip": "::1",
+    "country": "NE"
+  },
+  {
+    "type": "web-vital",
+    "url": "http://localhost:3001/dashboard",
+    "referrer": "http://localhost:3001/dashboard",
+    "timestamp": "2026-01-05T08:28:43.974Z",
+    "os": "Windows",
+    "browser": "Chrome",
+    "device": "desktop",
+    "screen_size": "2048x1018",
+    "vital_name": "CLS",
+    "vital_value": 0,
+    "ip": "::1",
+    "country": "NE"
+  },
+  {
+    "type": "pageview",
+    "url": "http://localhost:3001/dashboard",
+    "referrer": "http://localhost:3001/dashboard",
+    "timestamp": "2026-01-05T08:28:38.673Z",
+    "os": "Windows",
+    "browser": "Chrome",
+    "device": "desktop",
+    "screen_size": "2048x1018",
+    "ip": "::1",
+    "country": "NE"
+  },
+  {
+    "type": "web-vital",
+    "url": "http://localhost:3001/dashboard",
+    "referrer": "http://localhost:3001/dashboard",
+    "timestamp": "2026-01-05T08:28:39.341Z",
+    "os": "Windows",
+    "browser": "Chrome",
+    "device": "desktop",
+    "screen_size": "2048x1018",
+    "vital_name": "FCP",
+    "vital_value": 7624,
+    "ip": "::1",
+    "country": "NE"
+  },
+  {
+    "type": "web-vital",
+    "url": "http://localhost:3001/dashboard",
+    "referrer": "http://localhost:3001/dashboard",
+    "timestamp": "2026-01-05T08:28:43.971Z",
+    "os": "Windows",
+    "browser": "Chrome",
+    "device": "desktop",
+    "screen_size": "2048x1018",
+    "vital_name": "LCP",
+    "vital_value": 7740,
+    "ip": "::1",
+    "country": "NE"
+  }
+]
