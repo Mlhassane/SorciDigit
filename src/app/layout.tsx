@@ -7,6 +7,9 @@ import EndSlider from "@/components/shared/comeagain";
 import Footer from "@/components/shared/footer";
 import JsonLd from "@/components/seo/json-ld";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/components/language-provider";
+import { FloatingSettings } from "@/components/shared/floating-settings";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -74,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
 
@@ -83,19 +86,29 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${robotoMono.variable} antialiased`}
       >
-        <AnalyticsProvider />
-        <Script
-          src="https://datafa.st/js/script.js"
-          data-website-id="dfid_3KT1VBy2ZbtLGZElgWeDQ"
-          data-domain="www.sorcidigit.com"
-          data-allow-localhost="true"
-          strategy="afterInteractive"
-        />
-        <JsonLd />
-        <Navbar />
-        {children}
-        <EndSlider />
-        <Footer />{' '}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LanguageProvider>
+            <AnalyticsProvider />
+            <Script
+              src="https://datafa.st/js/script.js"
+              data-website-id="dfid_3KT1VBy2ZbtLGZElgWeDQ"
+              data-domain="www.sorcidigit.com"
+              data-allow-localhost="true"
+              strategy="afterInteractive"
+            />
+            <JsonLd />
+            <Navbar />
+            {children}
+            <FloatingSettings />
+            <EndSlider />
+            <Footer />{' '}
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

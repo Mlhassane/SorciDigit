@@ -10,12 +10,14 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { TextAnimate } from '../magicui/text-animate';
+import { useLanguage } from '../language-provider';
 
 const PIXEL_SCRIPT_URL =
   'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pixel-RKkUKH2OXWk9adKbDnozmndkwseTQh.js';
 
 export default function Hero() {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Use Intersection Observer to load the script only when the component is in view
@@ -137,8 +139,8 @@ export default function Hero() {
             )}
 
           >
-            <TextAnimate className='text-black' animation="blurInUp" delay={0}>
-              Accélérez votre transformation digital avec des solutions
+            <TextAnimate className='text-black dark:text-white' animation="blurInUp" delay={0}>
+              {t("hero.title")}
             </TextAnimate>
             {/* <img
               src="/1.png"
@@ -146,8 +148,8 @@ export default function Hero() {
               draggable={false}
               className="mx-4 mb-2 inline-block h-12 w-12 md:h-16 md:w-16"
             /> */}
-            <TextAnimate font='serif-italic' className='text-black' animation="blurIn" delay={0.5}>
-              innovantes
+            <TextAnimate font='serif-italic' className='text-black dark:text-white' animation="blurIn" delay={0.5}>
+              {t("hero.subtitle")}
             </TextAnimate>
           </motion.div>
         </div>
@@ -158,7 +160,7 @@ export default function Hero() {
           transition={{ duration: 0.75, delay: 0.3 }}
         >
           <TextAnimate className="text-muted-foreground text-xl" animation="blurIn" delay={1}>
-            Parce que chaque projet mérite une attention particulière, alors notre vision s'étend au delà  de votre imagination
+            {t("hero.desc")}
           </TextAnimate>
           <p className="text-muted-foreground text-xl">
 
@@ -174,8 +176,8 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.05, translateX: 0.3 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-b from-black to-black/80 rounded-full text-sm text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] pointer p-3 ">
-              Réserver un appel
+              className="bg-gradient-to-b from-black to-black/80 dark:from-white dark:to-white/80 rounded-full text-sm text-white dark:text-black shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] pointer p-3 ">
+              {t("hero.cta")}
             </motion.button>
           </Link>
         </motion.div>

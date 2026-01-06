@@ -13,7 +13,7 @@ export const Beam = () => {
         viewBox="0 0 300 150"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute top-16 left-24 mt-8 ml-24 hidden xl:block"
+        className="absolute top-16 left-24 mt-8 ml-24 hidden xl:block text-black dark:text-white"
       >
         <path
           d="M31 .5h32M0 .5h32m30 31h32m-1 0h32m-1 31h32M62.5 32V0m62 63V31"
@@ -47,10 +47,10 @@ export const Beam = () => {
             }}
             id="grad1"
           >
-            <stop stopColor="#000" stopOpacity="0" />
-            <stop stopColor="#000" />
-            <stop offset="0.325" stopColor="#000" />
-            <stop offset="1" stopColor="#" stopOpacity="0" />
+            <stop stopColor="currentColor" stopOpacity="0" />
+            <stop stopColor="currentColor" />
+            <stop offset="0.325" stopColor="currentColor" />
+            <stop offset="1" stopColor="currentColor" stopOpacity="0" />
           </motion.linearGradient>
         </defs>
       </svg>
@@ -60,11 +60,11 @@ export const Beam = () => {
         viewBox="0 0 300 150"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute top-16 right-24 mt-8 mr-24 hidden -scale-x-100 xl:block"
+        className="absolute top-16 right-24 mt-8 mr-24 hidden -scale-x-100 xl:block text-black dark:text-white"
       >
         <path
           d="M31 .5h32M0 .5h32m30 31h32m-1 0h32m-1 31h32M62.5 32V0m62 63V31"
-          stroke="url(#grad1)"
+          stroke="url(#grad2)"
           strokeWidth={1.5}
         />
         <defs>
@@ -92,12 +92,12 @@ export const Beam = () => {
               ease: 'linear',
               repeatDelay: 2,
             }}
-            id="grad1"
+            id="grad2"
           >
-            <stop stopColor="#000" stopOpacity="0" />
-            <stop stopColor="#000" />
-            <stop offset="0.325" stopColor="#000" />
-            <stop offset="1" stopColor="#000" stopOpacity="0" />
+            <stop stopColor="currentColor" stopOpacity="0" />
+            <stop stopColor="currentColor" />
+            <stop offset="0.325" stopColor="currentColor" />
+            <stop offset="1" stopColor="currentColor" stopOpacity="0" />
           </motion.linearGradient>
         </defs>
       </svg>

@@ -1,8 +1,28 @@
-import { Github, Instagram, Linkedin, Twitter,  } from 'lucide-react';
+'use client'
+
+import { Github, Instagram, Linkedin, Twitter, } from 'lucide-react';
 import Link from 'next/link';
 import { FaWhatsapp } from 'react-icons/fa';
+import { useLanguage } from '../language-provider';
 
 export default function Footer() {
+  const { language } = useLanguage();
+
+  const content = {
+    fr: {
+      desc: "Nous créons des expériences digitales puissantes et mémorables.",
+      whatsapp: "Discuter sur WhatsApp",
+      rights: "Tous droits réservés."
+    },
+    en: {
+      desc: "We create powerful and memorable digital experiences.",
+      whatsapp: "Chat on WhatsApp",
+      rights: "All rights reserved."
+    }
+  }
+
+  const t = content[language];
+
   return (
     <footer className="bg-muted/30 relative overflow-hidden rounded-t-3xl border-t md:rounded-t-[4rem]">
       <div className="absolute inset-0 -z-10">
@@ -22,8 +42,8 @@ export default function Footer() {
                 Sorci Digit
               </span>
             </div>
-            <p className="text-muted-foreground mb-4">
-              Nous créons des expériences digitales puissantes et mémorables.
+            <p className="text-muted-foreground mb-4 font-light">
+              {t.desc}
             </p>
             <div className="flex space-x-3">
               <Link
@@ -50,7 +70,7 @@ export default function Footer() {
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
-             
+
               <Link
                 href="https://wa.me/22777042181"
                 target="_blank"
@@ -60,8 +80,8 @@ export default function Footer() {
                 <div className="p-2 rounded-full bg-green-500 hover:bg-green-600 text-white animate-pulse shadow-lg transition duration-300 ease-in-out">
                   <FaWhatsapp className="h-5 w-5" />
                 </div>
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all text-xs text-muted-foreground">
-                  Discuter sur WhatsApp
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all text-[10px] text-muted-foreground whitespace-nowrap">
+                  {t.whatsapp}
                 </span>
               </Link>
             </div>
@@ -72,7 +92,7 @@ export default function Footer() {
           <div className="text-muted-foreground flex flex-col items-center justify-between text-sm md:flex-row">
             <p>
               ©{new Date().getFullYear()}{' '}
-              <span className="text-foreground font-medium">Sorci Digit</span>. Tous droits réservés.
+              <span className="text-foreground font-medium">Sorci Digit</span>. {t.rights}
             </p>
           </div>
         </div>

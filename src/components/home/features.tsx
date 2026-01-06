@@ -5,7 +5,13 @@ const ServicesSection = () => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Animation pour le point qui "respire"
   useEffect(() => {
     const animateBreathe = () => {
@@ -25,7 +31,7 @@ const ServicesSection = () => {
         return () => animation.cancel();
       }
     };
-    
+
     animateBreathe();
   }, []);
 
@@ -52,23 +58,23 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className="px-6 py-20 max-w-6xl mx-auto relative overflow-hidden"
+      className="px-6 py-20 max-w-6xl mx-auto relative overflow-hidden bg-white dark:bg-black transition-colors duration-500"
     >
       {/* Éléments décoratifs flottants */}
       <div className="absolute -top-20 -left-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
       <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
-      
-      <div 
+
+      <div
         className={`transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}
       >
         {/* Services Header */}
         <div className="flex items-center gap-4 mb-12 relative z-10">
-          <div className="w-8 h-8 border-2 border-black rounded-full flex items-center justify-center animate-bounce">
-            <div className="w-2 h-2 bg-black rounded-full breathe-dot"></div>
+          <div className="w-8 h-8 border-2 border-black dark:border-white rounded-full flex items-center justify-center animate-bounce">
+            <div className="w-2 h-2 bg-black dark:bg-white rounded-full breathe-dot"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-black">
+          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 animate-text-gradient">
               Services
             </span>
@@ -78,8 +84,8 @@ const ServicesSection = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-auto relative z-10">
           {/* Branding Design Card */}
-          <div 
-            className="lg:row-span-2 bg-black rounded-3xl p-8 flex flex-col justify-center items-center text-white min-h-[300px] lg:min-h-[400px] group hover:scale-[1.02] transition-transform duration-500 hover:shadow-2xl cursor-pointer relative overflow-hidden"
+          <div
+            className="lg:row-span-2 bg-black dark:bg-zinc-900 rounded-3xl p-8 flex flex-col justify-center items-center text-white min-h-[300px] lg:min-h-[400px] group hover:scale-[1.02] transition-transform duration-500 hover:shadow-2xl cursor-pointer relative overflow-hidden"
             onMouseEnter={() => setActiveCard('branding')}
             onMouseLeave={() => setActiveCard(null)}
           >
@@ -91,12 +97,12 @@ const ServicesSection = () => {
                 Branding Design
               </p>
             </div>
-            
+
             {/* Animated particles */}
-            {activeCard === 'branding' && (
+            {mounted && activeCard === 'branding' && (
               <>
                 {[...Array(25)].map((_, i) => (
-                  <div 
+                  <div
                     key={i}
                     className="absolute rounded-full animate-particles"
                     style={{
@@ -111,13 +117,13 @@ const ServicesSection = () => {
                 ))}
               </>
             )}
-            
+
             {/* Animated shapes */}
             <div className="absolute top-4 left-4 w-12 h-12 border-2 border-purple-500 rounded-full opacity-10 group-hover:opacity-30 transition-opacity duration-500 animate-spin-slow"></div>
             <div className="absolute bottom-4 right-4 w-16 h-16 border-2 border-pink-500 rounded-lg opacity-10 group-hover:opacity-30 transition-opacity duration-500 animate-spin-slow-reverse"></div>
-            
+
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
+
             {/* Floating text */}
             <div className="absolute bottom-6 left-0 right-0 text-center opacity-0 group-hover:opacity-70 transition-opacity duration-500 text-sm">
               Identité visuelle • Logos • Charte graphique
@@ -125,16 +131,16 @@ const ServicesSection = () => {
           </div>
 
           {/* Communication Digital Card */}
-          <div 
+          <div
             className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 rounded-3xl p-6 text-white min-h-[180px] group hover:scale-[1.02] transition-transform duration-500 hover:shadow-2xl cursor-pointer relative overflow-hidden"
             onMouseEnter={() => setActiveCard('communication')}
             onMouseLeave={() => setActiveCard(null)}
           >
             <h3 className="text-xl font-semibold mb-6 group-hover:scale-105 transition-transform duration-300 flex items-center">
               <span className="mr-2 animate-pulse">📱</span>
-              Communication Digital 
+              Communication Digital
             </h3>
-            
+
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="w-6 h-6 border-2 border-white rounded-full flex items-center justify-center group-hover:bg-blue-400/30 transition-colors">
@@ -153,16 +159,16 @@ const ServicesSection = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Animated social icons */}
             {activeCard === 'communication' && (
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="flex flex-wrap justify-center gap-4">
                   {['facebook', 'twitter', 'instagram', 'linkedin', 'tiktok', 'youtube'].map((platform, i) => (
-                    <div 
+                    <div
                       key={platform}
                       className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white text-xl animate-float"
-                      style={{ 
+                      style={{
                         animationDelay: `${i * 0.1}s`,
                         boxShadow: '0 0 15px rgba(255,255,255,0.3)'
                       }}
@@ -173,7 +179,7 @@ const ServicesSection = () => {
                 </div>
               </div>
             )}
-            
+
             {/* Wave animation */}
             <div className="absolute bottom-0 left-0 right-0 h-8 overflow-hidden opacity-30 group-hover:opacity-70 transition-opacity duration-500">
               <div className="absolute bottom-0 left-0 w-200% h-full bg-wave-pattern animate-wave"></div>
@@ -181,7 +187,7 @@ const ServicesSection = () => {
           </div>
 
           {/* Web & Mobile Development Card */}
-          <div 
+          <div
             className="bg-black rounded-3xl p-6 text-white min-h-[180px] flex flex-col justify-center items-center group hover:scale-[1.02] transition-transform duration-500 hover:shadow-2xl cursor-pointer relative"
             onMouseEnter={() => setActiveCard('dev')}
             onMouseLeave={() => setActiveCard(null)}
@@ -193,7 +199,7 @@ const ServicesSection = () => {
               <p className="text-lg opacity-80 group-hover:opacity-100 transition-opacity duration-300">& Mobile</p>
               <div className="w-12 h-1 bg-white mx-auto mt-4 group-hover:w-16 transition-all duration-300"></div>
             </div>
-            
+
             {/* Animated device icons */}
             {activeCard === 'dev' && (
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -212,7 +218,7 @@ const ServicesSection = () => {
                     <div className="w-16 h-10 bg-gray-800 rounded-xl border border-gray-600 relative">
                       <div className="w-1 h-1 bg-gray-400 rounded-full absolute top-2 right-2"></div>
                       <div className="absolute inset-1 bg-gray-900 rounded flex items-center justify-center">
-                        <div className="text-xs text-blue-400 font-mono animate-code-pulse" style={{animationDelay: '0.5s'}}>
+                        <div className="text-xs text-blue-400 font-mono animate-code-pulse" style={{ animationDelay: '0.5s' }}>
                           {`{ ... }`}
                         </div>
                       </div>
@@ -221,7 +227,7 @@ const ServicesSection = () => {
                 </div>
               </div>
             )}
-            
+
             {/* Animated code lines */}
             <div className="absolute top-4 right-4 text-xs opacity-20 group-hover:opacity-50 transition-opacity">
               <div className="font-mono animate-code-scroll">
@@ -232,12 +238,12 @@ const ServicesSection = () => {
                 <div>app.init();</div>
               </div>
             </div>
-            
+
             <div className="absolute inset-0 bg-gradient-to-br from-gray-600/20 to-gray-400/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
 
           {/* Conseils & Audits Card */}
-          <div 
+          <div
             className="lg:col-span-2 bg-black rounded-3xl p-8 text-white min-h-[200px] flex items-center justify-center group hover:scale-[1.02] transition-transform duration-500 hover:shadow-2xl cursor-pointer relative overflow-hidden"
             onMouseEnter={() => setActiveCard('audit')}
             onMouseLeave={() => setActiveCard(null)}
@@ -245,12 +251,12 @@ const ServicesSection = () => {
             <h3 className="text-4xl md:text-5xl font-light group-hover:scale-110 transition-transform duration-300 relative z-10">
               Conseils & Audits
             </h3>
-            
+
             {/* Animated chart */}
             {activeCard === 'audit' && (
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center space-x-1 pb-4 px-4">
                 {[40, 60, 80, 60, 40, 70, 90].map((height, i) => (
-                  <div 
+                  <div
                     key={i}
                     className="w-4 bg-gradient-to-t from-purple-500 to-pink-500 rounded-t-md relative overflow-hidden"
                     style={{ height: `${height}%` }}
@@ -265,13 +271,13 @@ const ServicesSection = () => {
                 ))}
               </div>
             )}
-            
+
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
+
             {/* Animated circles */}
             <div className="absolute top-1/4 left-1/4 w-16 h-16 border-2 border-purple-500/30 rounded-full animate-ping-slow"></div>
-            <div className="absolute bottom-1/3 right-1/3 w-12 h-12 border-2 border-pink-500/30 rounded-full animate-ping-slow" style={{animationDelay: '0.5s'}}></div>
-            
+            <div className="absolute bottom-1/3 right-1/3 w-12 h-12 border-2 border-pink-500/30 rounded-full animate-ping-slow" style={{ animationDelay: '0.5s' }}></div>
+
             {/* Action button */}
             <button className="absolute bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white text-black px-6 py-2 rounded-full font-medium shadow-lg hover:bg-gray-100 hover:scale-105 transition-all glow-effect">
               Demander un audit <span className="ml-2">→</span>
@@ -279,7 +285,7 @@ const ServicesSection = () => {
           </div>
         </div>
       </div>
-      
+
       <style jsx global>{`
         @keyframes float {
           0%, 100% { transform: translateY(0); }
@@ -288,7 +294,7 @@ const ServicesSection = () => {
         
         @keyframes particles {
           0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
-          100% { transform: translateY(-150px) translateX(${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg); opacity: 0; }
+          100% { transform: translateY(-150px) translateX(20px) rotate(180deg); opacity: 0; }
         }
         
         @keyframes grow {

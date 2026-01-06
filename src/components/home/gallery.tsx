@@ -7,10 +7,12 @@ import { motion, useInView } from 'framer-motion';
 import WrapButtonDemo from '../ui/wrap-button';
 import { Globe } from 'lucide-react';
 import CardCaroursalDemo from './cardcarouseldemo';
+import { useLanguage } from '../language-provider';
 
 export default function Gallery() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const { t } = useLanguage();
 
   return (
     <section
@@ -48,10 +50,10 @@ export default function Gallery() {
               'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 mt-5 bg-gradient-to-r bg-clip-text text-center text-4xl text-transparent md:text-[54px] md:leading-[60px] serif italic',
             )}
           >
-            Quelques projets réalisés
+            {t("portfolio.title")}
           </h2>
           <p className="mt-5 text-center text-lg text-zinc-500">
-            Decouvrez ici les projets sur lesquels notre équipe s'est donné corps et âme  pour realiser
+            {t("portfolio.subtitle")}
           </p>
         </motion.div>
         <div className="mx-auto mt-10 w-full max-w-7xl rounded-[24px] p-2 shadow-sm md:rounded-t-[44px]">
@@ -59,12 +61,9 @@ export default function Gallery() {
         </div>
         <section className="relative z-50 my-10 mb-20 w-full">
           <div className="mt-20 flex flex-col items-center justify-center">
-
-
-
-            <WrapButtonDemo className="mt-10" href="/docs/get-started">
+            <WrapButtonDemo className="mt-10" href="/contact">
               <Globe className="animate-spin" />
-              Quelle est votre projet ?
+              {t("portfolio.cta.title")}
             </WrapButtonDemo>
           </div>
         </section>
