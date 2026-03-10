@@ -1,7 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
-import Link from "next/link"
+import { motion, Variants } from "framer-motion"
+import { Link } from "lucide-react"
 
 const projects = [
   {
@@ -98,16 +98,16 @@ const projects = [
 
 const categories = ["Tous", "AgriTech", "IoT & IA", "Automatisation", "Pack Digital", "SaaS", "HealthTech"]
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.7, ease: "easeOut" },
+    transition: { delay: i * 0.15, duration: 0.7, ease: "easeOut" as const },
   }),
 }
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
