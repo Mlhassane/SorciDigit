@@ -15,6 +15,8 @@ const space = Geist({
   weight: '400',
 });
 
+
+
 export default function Gallery() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
