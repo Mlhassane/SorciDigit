@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
               >
                 <Link
                   href={item.href}
-                  className="text-sm text-black hover:text-gray-700 transition-all duration-300 font-medium relative group"
+                  className="text-sm text-black hover:text-gray-700 transition-all duration-300 font-medium relative group grotesk"
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
@@ -86,9 +86,9 @@ const Navbar: React.FC = () => {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 text-sm text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 font-medium shadow-lg"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-sm text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 font-medium shadow-lg grotesk"
             >
-              Appellez nous
+              Appelez-nous
             </Link>
           </motion.div>
         </motion.div>
@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
           aria-expanded={isOpen}
         >
           <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-          <span className="h-6 w-6 text-black relative z-10" > 
+          <span className="h-6 w-6 text-black relative z-10 grotesk font-bold" >
             Menu </span>
         </motion.button>
       </div>
@@ -153,7 +153,7 @@ const Navbar: React.FC = () => {
                 transition={{ delay: 0.3, type: "spring" }}
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl"></div>
-                <span className="h-6 w-6 text-black relative z-10">
+                <span className="h-6 w-6 text-black relative z-10 grotesk font-bold">
                   Fermer </span>
               </motion.button>
 
@@ -185,7 +185,7 @@ const Navbar: React.FC = () => {
                   >
                     <Link
                       href={item.href}
-                      className="block py-4 px-6 text-2xl text-black hover:text-gray-700 hover:bg-gray-50/50 rounded-2xl transition-all duration-300 font-medium relative group"
+                      className="block py-4 px-6 text-2xl text-black hover:text-gray-700 hover:bg-gray-50/50 rounded-2xl transition-all duration-300 font-medium relative group grotesk"
                       onClick={toggleMenu}
                     >
                       <span className="absolute left-0 top-1/2 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full transform -translate-y-1/2"></span>
@@ -211,7 +211,7 @@ const Navbar: React.FC = () => {
                 >
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center px-10 py-5 text-lg text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 font-semibold shadow-lg relative overflow-hidden group"
+                    className="inline-flex items-center justify-center px-10 py-5 text-lg text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 font-semibold shadow-lg relative overflow-hidden group grotesk"
                     onClick={toggleMenu}
                   >
                     <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>

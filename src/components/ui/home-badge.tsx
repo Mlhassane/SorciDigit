@@ -3,12 +3,15 @@ import { motion } from 'framer-motion';
 
 export default function HomeBadge() {
   return (
-    <div className="group relative mb-2 inline-block cursor-pointer rounded-full bg-slate-300 p-px text-xs leading-6 font-semibold no-underline shadow-2xl shadow-zinc-900 dark:bg-slate-900">
+    <div className="group relative mb-2 inline-block cursor-pointer rounded-full bg-gray-200/50 p-px text-xs leading-6 font-semibold no-underline shadow-sm md:shadow-md transition-shadow">
       <span className="absolute inset-0 overflow-hidden rounded-full">
-        <span className="bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(248, 56, 110,0.6)_0%,rgba(56,189,248,0)_75%)] absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+        <span className="bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(0,0,0,0.1)_0%,rgba(0,0,0,0)_75%)] absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
       </span>
-      <div className="ring-ring/10 relative z-10 flex items-center space-x-2 rounded-full bg-zinc-100 px-4 py-0.5 ring-1 dark:bg-zinc-950">
-        <span>⚡ Sorci Digit</span>
+      <div className="ring-ring/10 relative z-10 flex items-center space-x-2 rounded-full bg-white px-4 py-1 ring-1 border border-gray-100 grotesk text-gray-600">
+        <span className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse"></span>
+          Sorci Digit Agency
+        </span>
         <svg
           width="16"
           height="16"
@@ -28,7 +31,7 @@ export default function HomeBadge() {
           ></motion.path>
         </svg>
       </div>
-      <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-rose-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
+      <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-gray-400/0 via-gray-400/50 to-gray-400/0 transition-opacity duration-500 group-hover:opacity-100"></span>
     </div>
   );
 }

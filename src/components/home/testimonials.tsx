@@ -99,7 +99,7 @@ const TestimonialsColumn = (props: {
               >
                 {/* rose color gradient */}
                 <div className="from-primary/10 to-card absolute -top-5 -left-5 -z-10 h-40 w-40 rounded-full bg-gradient-to-b blur-md" />
-                <div>{text}</div>
+                <div className="grotesk">{text}</div>
                 <div className="mt-5 flex items-center gap-2">
                   <img
                     src={imageSrc}
@@ -109,10 +109,10 @@ const TestimonialsColumn = (props: {
                     className="h-10 w-10 rounded-full"
                   />
                   <div className="flex flex-col">
-                    <div className="leading-5 font-medium tracking-tight">
+                    <div className="leading-5 font-medium tracking-tight grotesk">
                       {name}
                     </div>
-                    <div className="leading-5 tracking-tight">{username}</div>
+                    <div className="leading-5 tracking-tight grotesk text-zinc-500">{username}</div>
                   </div>
                 </div>
               </div>
@@ -159,15 +159,13 @@ const Testimonials = () => {
           </div>
           <h2
             className={cn(
-              'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 mt-5 bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]',
-              space.className,
+              'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 mt-5 bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px] serif italic',
             )}
           >
-            What our users say
+            Ce que disent nos clients
           </h2>
-          <p className="mt-5 text-center text-lg text-zinc-500">
-            From intuitive design to powerful features, our app has become an
-            essential tool for users around the world.
+          <p className="mt-5 text-center text-lg text-zinc-500 grotesk">
+            Chaque projet est une collaboration unique. Voici les retours de ceux qui nous ont fait confiance.
           </p>
         </motion.div>
         <div className="my-16 flex max-h-[738px] justify-center gap-6 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">

@@ -71,8 +71,8 @@ export const CardCarousel: React.FC<CarouselProps> = ({
           <div className="flex flex-col justify-center pt-14 pb-2 pl-4 md:items-center">
             <div className="flex gap-2">
               <div>
-              
-                <p >Nous travaillons beaucoup pour rendre les chose plus <span className='font-bold '>facile</span> <br /> plus <span className='font-bold' >accessible</span> et surtout à <span className='font-bold' >moindre coup</span> </p>
+
+                <p >Nous travaillons beaucoup pour rendre les choses plus <span className='font-bold '>faciles</span> <br /> plus <span className='font-bold' >accessibles</span> et surtout à <span className='font-bold' >moindre coût</span> </p>
               </div>
             </div>
           </div>
@@ -100,9 +100,9 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                 navigation={
                   showNavigation
                     ? {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                      }
+                      nextEl: '.swiper-button-next',
+                      prevEl: '.swiper-button-prev',
+                    }
                     : undefined
                 }
                 modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}

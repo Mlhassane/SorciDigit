@@ -1,4 +1,4 @@
-import { Github, Instagram, Linkedin, Twitter,  } from 'lucide-react';
+import { Github, Instagram, Linkedin, Twitter, } from 'lucide-react';
 import Link from 'next/link';
 import { FaWhatsapp } from 'react-icons/fa';
 
@@ -18,11 +18,11 @@ export default function Footer() {
                 alt="logo"
                 className="h-8 w-8 rounded-full"
               />
-              <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent dark:bg-gradient-to-b">
+              <span className="text-black text-2xl font-bold serif italic">
                 Sorci Digit
               </span>
             </div>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-gray-500 mb-4 grotesk">
               Nous créons des expériences digitales puissantes et mémorables.
             </p>
             <div className="flex space-x-3">
@@ -50,7 +50,7 @@ export default function Footer() {
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
-             
+
               <Link
                 href="https://wa.me/22777042181"
                 target="_blank"
@@ -60,7 +60,7 @@ export default function Footer() {
                 <div className="p-2 rounded-full bg-green-500 hover:bg-green-600 text-white animate-pulse shadow-lg transition duration-300 ease-in-out">
                   <FaWhatsapp className="h-5 w-5" />
                 </div>
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all text-xs text-muted-foreground">
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all text-xs text-gray-500 grotesk">
                   Discuter sur WhatsApp
                 </span>
               </Link>
@@ -70,9 +70,9 @@ export default function Footer() {
         <div className="border-muted/50 relative border-t pt-8">
           <div className="via-primary/70 absolute top-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent to-transparent"></div>
           <div className="text-muted-foreground flex flex-col items-center justify-between text-sm md:flex-row">
-            <p>
+            <p className="grotesk">
               ©{new Date().getFullYear()}{' '}
-              <span className="text-foreground font-medium">Sorci Digit</span>. Tous droits réservés.
+              <span className="text-black font-bold serif italic">Sorci Digit</span>. Tous droits réservés.
             </p>
           </div>
         </div>

@@ -42,22 +42,26 @@ export default function EndSlider() {
           onMouseEnter={() => setSlowDownAnimation(true)}
           onMouseLeave={() => setSlowDownAnimation(false)}
         >
-          {Array.from({ length: 10 }).map((_, index) => (
+          {[
+            { step: "1", title: "Audit & Stratégie" },
+            { step: "2", title: "Création & Développement" },
+            { step: "3", title: "Lancement & Croissance" },
+            { step: "1", title: "Audit & Stratégie" },
+            { step: "2", title: "Création & Développement" },
+            { step: "3", title: "Lancement & Croissance" },
+          ].map((item, index) => (
             <div
               key={index}
               className={cn(
-                'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 flex items-center gap-4 bg-gradient-to-r bg-clip-text text-center font-semibold text-transparent',
+                'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 flex items-center gap-4 bg-gradient-to-r bg-clip-text text-center font-semibold text-transparent whitespace-nowrap',
                 space.className,
               )}
             >
-              <img
-                src="/1.png"
-                alt="Metal Rose"
-                className="mr-4 h-32 w-32"
-              />
-              <span className={cn(slowDownAnimation && 'text-primary')}>
-                Les Sorciers du Digital
+              <span className="text-4xl text-black/20 mr-2 serif italic">{item.step}.</span>
+              <span className={cn('grotesk', slowDownAnimation && 'text-primary')}>
+                {item.title}
               </span>
+              <span className="mx-8 text-black/10">✦</span>
             </div>
           ))}
         </motion.div>

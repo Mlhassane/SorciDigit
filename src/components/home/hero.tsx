@@ -143,19 +143,10 @@ export default function Hero() {
               'from-foreground/60  via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 max-w-5xl bg-gradient-to-r bg-clip-text text-center text-6xl font-extrabold tracking-tighter text-transparent sm:text-6xl xl:text-6xl/none',
 
             )}
-         
+
           >
-            <TextAnimate  className='text-black' animation="blurInUp"  delay={0}>
-              Accélérez votre transformation digital avec des solutions
-            </TextAnimate>
-            {/* <img
-              src="/1.png"
-              alt="Logo"
-              draggable={false}
-              className="mx-4 mb-2 inline-block h-12 w-12 md:h-16 md:w-16"
-            /> */}
-            <TextAnimate font='serif-italic'  className='text-black' animation="blurIn"  delay={0.5}>
-              innovantes
+            <TextAnimate className='text-black serif' animation="blurInUp" delay={0}>
+              Agence marketing digital, branding et création de sites
             </TextAnimate>
           </motion.div>
         </div>
@@ -165,11 +156,11 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.3 }}
         >
-            <TextAnimate className="text-muted-foreground text-xl" animation="blurIn"  delay={1}>
-             Parce que chaque projet mérite une attention particulière, alors notre vision s'étend au delà  de votre imagination 
-            </TextAnimate>
+          <TextAnimate className="text-muted-foreground text-xl grotesk" animation="blurIn" delay={0.5}>
+            On crée du contenu qui attire des clients et des sites qui convertissent.
+          </TextAnimate>
           <p className="text-muted-foreground text-xl">
-          
+
           </p>
         </motion.div>
         <motion.div
