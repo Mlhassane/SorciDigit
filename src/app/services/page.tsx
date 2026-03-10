@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import Link from "next/link"
 
 const services = [
@@ -85,13 +85,13 @@ const process = [
     desc: "Nous analysons vos besoins, objectifs et contraintes pour comprendre votre projet."
   },
   {
-    step: "02", 
+    step: "02",
     title: "Stratégie",
     desc: "Nous définissons ensemble la meilleure approche technique et méthodologique."
   },
   {
     step: "03",
-    title: "Conception", 
+    title: "Conception",
     desc: "Nous créons les maquettes, prototypes et architectures de votre solution."
   },
   {
@@ -111,16 +111,16 @@ const process = [
   }
 ]
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: (i = 1) => ({
+  visible: (i: number = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.7, ease: "easeOut" },
+    transition: { delay: i * 0.15, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
   }),
 }
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -140,14 +140,14 @@ export default function ServicesPage() {
           variants={staggerContainer}
           className="max-w-2xl mx-auto"
         >
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-5xl font-light mb-6 text-white/90"
             variants={fadeUp}
             custom={0}
           >
             Nos Services
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-gray-300 text-lg font-light"
             variants={fadeUp}
             custom={1}
@@ -205,7 +205,7 @@ export default function ServicesPage() {
           variants={staggerContainer}
           className="max-w-4xl mx-auto"
         >
-          <motion.h2 
+          <motion.h2
             className="text-3xl font-normal mb-12 text-center text-white/90"
             variants={fadeUp}
             custom={0}
@@ -238,14 +238,14 @@ export default function ServicesPage() {
           variants={staggerContainer}
           className="max-w-md mx-auto text-center"
         >
-          <motion.h2 
+          <motion.h2
             className="text-2xl font-normal mb-4 text-white/90"
             variants={fadeUp}
             custom={0}
           >
             Prêt à commencer ?
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-300 mb-6 font-light"
             variants={fadeUp}
             custom={1}
@@ -253,8 +253,8 @@ export default function ServicesPage() {
             Discutons de votre projet et trouvons la solution parfaite
           </motion.p>
           <motion.div variants={fadeUp} custom={2}>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="inline-block bg-white/90 text-black font-normal px-7 py-3 rounded-full border border-white/20 hover:bg-white transition-colors"
             >
               Nous contacter
@@ -264,4 +264,4 @@ export default function ServicesPage() {
       </section>
     </div>
   )
-} 
+}
