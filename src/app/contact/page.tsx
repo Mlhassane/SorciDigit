@@ -1,7 +1,7 @@
 
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import Link from "next/link"
 import { FormEvent, useState } from "react"
 
@@ -39,16 +39,16 @@ const services = [
   "Autre projet"
 ]
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.7, ease: "easeOut" },
+    transition: { delay: i * 0.15, duration: 0.7, ease: "easeOut" as const },
   }),
 }
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -113,14 +113,14 @@ export default function ContactPage() {
           variants={staggerContainer}
           className="max-w-2xl mx-auto"
         >
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-5xl font-light mb-6 text-white/90 tracking-tight"
 
             custom={0}
           >
             Contactez-nous
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-gray-300 text-lg font-light max-w-xl mx-auto"
             variants={fadeUp}
             custom={1}
@@ -139,9 +139,9 @@ export default function ContactPage() {
           variants={staggerContainer}
           className="max-w-4xl mx-auto"
         >
-          <motion.h2 
+          <motion.h2
             className="text-2xl font-normal mb-8 text-center text-white/90"
-   
+
             custom={0}
           >
             Nos Coordonnées
@@ -157,7 +157,7 @@ export default function ContactPage() {
               >
                 <div className="text-3xl mb-3">{method.icon}</div>
                 <h3 className="text-lg font-semibold mb-2 text-white/90">{method.title}</h3>
-                <a 
+                <a
                   href={method.href}
                   className="text-gray-300 font-light mb-2 hover:text-white transition-colors duration-300 inline-block"
                   aria-label={`Contactez-nous via ${method.title}`}
@@ -180,16 +180,16 @@ export default function ContactPage() {
           variants={staggerContainer}
           className="max-w-2xl mx-auto"
         >
-          <motion.h2 
+          <motion.h2
             className="text-2xl font-normal mb-8 text-center text-white/90"
-       
+
             custom={0}
           >
             Envoyez-nous un message
           </motion.h2>
-          
+
           {isSubmitted && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
@@ -200,7 +200,7 @@ export default function ContactPage() {
           )}
 
           {formError && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
@@ -371,26 +371,26 @@ export default function ContactPage() {
           variants={staggerContainer}
           className="max-w-md mx-auto text-center"
         >
-          <motion.h2 
+          <motion.h2
             className="text-2xl font-normal mb-4 text-white/90"
             variants={fadeUp}
             custom={0}
           >
             Ou prenez rendez-vous
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-300 mb-6 font-light max-w-sm mx-auto"
             variants={fadeUp}
             custom={1}
           >
             Réservez un créneau de 30 minutes pour discuter de votre projet
           </motion.p>
-          <motion.div 
-            variants={fadeUp} 
+          <motion.div
+            variants={fadeUp}
             custom={2}
             whileHover={{ scale: 1.05 }}
           >
-            <Link 
+            <Link
               href="#"
               className="inline-block bg-white/10 text-white font-normal px-7 py-3 rounded-full border border-white/20 hover:bg-white/20 transition-colors duration-300"
               aria-label="Prendre un rendez-vous"
