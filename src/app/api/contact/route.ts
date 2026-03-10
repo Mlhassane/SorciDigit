@@ -8,11 +8,14 @@ export async function POST(req: Request) {
 
         // Build the transporter using SMTP settings
         // Defaulting to Gmail as an example. You'll need to set these in your .env.local file
+        // Configuration SMTP pour Hostinger
         const transporter = nodemailer.createTransport({
-            service: 'gmail', // or your SMTP provider like SendGrid, Mailgun, etc.
+            host: 'smtp.hostinger.com',
+            port: 465,
+            secure: true, // true for port 465, false for port 587
             auth: {
-                user: process.env.EMAIL_USER, // Your email address
-                pass: process.env.EMAIL_PASS, // Your App Password or email password
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
             },
         });
 
