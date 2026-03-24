@@ -20,6 +20,7 @@ const Navbar: React.FC = () => {
 
   const menuItems: MenuItem[] = [
     { name: "Accueil", href: "/" },
+    { name: "À propos", href: "/a-propos" },
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Contact", href: "/contact" },

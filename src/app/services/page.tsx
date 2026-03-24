@@ -1,7 +1,9 @@
 "use client"
 
+import React from "react"
 import { motion, type Variants } from "framer-motion"
 import Link from "next/link"
+import { MonitorSmartphone, Workflow, Leaf, ShoppingCart, PenTool, Rocket, ArrowRight } from "lucide-react"
 
 const services = [
   {
@@ -14,10 +16,10 @@ const services = [
       "Intégration avec vos systèmes existants",
       "Maintenance et support technique"
     ],
-    icon: "💻"
+    icon: <MonitorSmartphone className="w-8 h-8 text-black" />
   },
   {
-    title: "Digitalisation & automatisation des processus métiers",
+    title: "Digitalisation & automatisation métiers",
     desc: "Optimisez vos processus grâce à la technologie et l'automatisation intelligente.",
     details: [
       "Audit de vos processus actuels",
@@ -26,19 +28,7 @@ const services = [
       "Formation de vos équipes",
       "Suivi et optimisation continue"
     ],
-    icon: "⚙️"
-  },
-  {
-    title: "Solutions pour l'agriculture intelligente (AgriTech)",
-    desc: "Technologies innovantes pour moderniser l'agriculture et améliorer la productivité.",
-    details: [
-      "Applications de gestion des cultures",
-      "Systèmes de monitoring IoT",
-      "Solutions de stockage intelligent",
-      "Plateformes de vente directe",
-      "Analytics et prévisions météo"
-    ],
-    icon: "🌾"
+    icon: <Workflow className="w-8 h-8 text-black" />
   },
   {
     title: "Création de sites vitrines & e-commerce",
@@ -50,22 +40,34 @@ const services = [
       "Intégration de moyens de paiement",
       "Analytics et suivi des conversions"
     ],
-    icon: "🛒"
+    icon: <ShoppingCart className="w-8 h-8 text-black" />
   },
   {
-    title: "Design graphique & identité de marque",
+    title: "Solutions AgriTech intelligentes",
+    desc: "Technologies innovantes pour moderniser l'agriculture et améliorer la productivité.",
+    details: [
+      "Applications de gestion des cultures",
+      "Systèmes de monitoring IoT",
+      "Solutions de stockage intelligent",
+      "Plateformes de vente directe",
+      "Analytics et prévisions météo"
+    ],
+    icon: <Leaf className="w-8 h-8 text-black" />
+  },
+  {
+    title: "Design graphique & identité",
     desc: "Créez une identité visuelle forte qui vous démarque de la concurrence.",
     details: [
       "Logo et charte graphique",
       "Supports de communication",
-      "Design d'interfaces utilisateur",
+      "Design d'interfaces utilisateur (UI/UX)",
       "Branding et positionnement",
       "Guidelines et documentation"
     ],
-    icon: "🎨"
+    icon: <PenTool className="w-8 h-8 text-black" />
   },
   {
-    title: "Accompagnement stratégique et conseil en innovation",
+    title: "Stratégie & Conseil digital",
     desc: "Stratégie digitale sur mesure pour transformer votre entreprise.",
     details: [
       "Audit digital complet",
@@ -74,121 +76,107 @@ const services = [
       "Veille technologique",
       "Suivi des objectifs"
     ],
-    icon: "🚀"
+    icon: <Rocket className="w-8 h-8 text-black" />
   }
 ]
 
 const process = [
-  {
-    step: "01",
-    title: "Découverte",
-    desc: "Nous analysons vos besoins, objectifs et contraintes pour comprendre votre projet."
-  },
-  {
-    step: "02",
-    title: "Stratégie",
-    desc: "Nous définissons ensemble la meilleure approche technique et méthodologique."
-  },
-  {
-    step: "03",
-    title: "Conception",
-    desc: "Nous créons les maquettes, prototypes et architectures de votre solution."
-  },
-  {
-    step: "04",
-    title: "Développement",
-    desc: "Nous développons votre solution avec des technologies modernes et robustes."
-  },
-  {
-    step: "05",
-    title: "Livraison",
-    desc: "Nous testons, déployons et formons vos équipes à utiliser la solution."
-  },
-  {
-    step: "06",
-    title: "Suivi",
-    desc: "Nous assurons la maintenance, les mises à jour et l'optimisation continue."
-  }
+  { step: "01", title: "Découverte", desc: "Nous analysons vos besoins et contraintes pour comprendre votre projet." },
+  { step: "02", title: "Stratégie", desc: "Nous définissons ensemble la meilleure approche technique." },
+  { step: "03", title: "Conception", desc: "Nous créons les maquettes et l'architecture de votre solution." },
+  { step: "04", title: "Développement", desc: "Nous développons avec des technologies modernes et robustes." },
+  { step: "05", title: "Livraison", desc: "Nous testons, déployons et formons vos équipes à l'utilisation." },
+  { step: "06", title: "Suivi", desc: "Nous assurons la maintenance et l'optimisation continue." }
 ]
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 30 },
   visible: (i: number = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { delay: i * 0.1, duration: 0.7, ease: "easeOut" },
   }),
 }
 
 const staggerContainer: Variants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.1 } },
 }
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-black text-white font-sans">
+    <div className="min-h-screen bg-[#fafafa] text-black font-sans overflow-hidden">
+
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-[40vw] h-[40vw] min-w-[500px] min-h-[500px] bg-gray-200/40 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/3 pointer-events-none z-0"></div>
+
       {/* Hero */}
-      <section className="py-24 px-4 text-center">
+      <section className="pt-32 pb-16 px-4 text-center relative z-10">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="max-w-2xl mx-auto"
+          className="max-w-3xl mx-auto"
         >
-          <motion.h1
-            className="text-4xl md:text-5xl font-light mb-6 text-white/90"
-            variants={fadeUp}
-            custom={0}
+          <motion.span
+            variants={fadeUp} custom={0}
+            className="inline-block text-[10px] md:text-xs font-bold tracking-[0.3em] text-gray-400 uppercase mb-6 grotesk"
           >
-            Nos Services
-          </motion.h1>
-          <motion.p
-            className="text-gray-300 text-lg font-light"
+            Expertises
+          </motion.span>
+          <motion.h1
+            className="text-6xl md:text-[6rem] font-medium mb-6 text-black tracking-tight serif italic leading-[1]"
             variants={fadeUp}
             custom={1}
           >
-            Des solutions digitales sur mesure pour transformer votre entreprise
+            Nos <span className="not-italic font-bold">Services.</span>
+          </motion.h1>
+          <motion.p
+            className="text-gray-500 text-lg md:text-2xl max-w-2xl mx-auto grotesk leading-relaxed"
+            variants={fadeUp}
+            custom={2}
+          >
+            Des solutions digitales sur mesure et haute performance pour transformer votre entreprise.
           </motion.p>
         </motion.div>
       </section>
 
       {/* Services détaillés */}
-      <section className="py-16 px-4 border-t border-white/5">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 px-4 relative z-10">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           >
             {services.map((service, idx) => (
               <motion.div
                 key={service.title}
-                className="mb-16 last:mb-0"
+                className="bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all duration-300 flex flex-col group"
                 variants={fadeUp}
                 custom={idx}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                  <div className="lg:col-span-1">
-                    <div className="text-4xl mb-4">{service.icon}</div>
-                    <h2 className="text-2xl font-normal mb-3 text-white/90">{service.title}</h2>
-                    <p className="text-gray-300 font-light">{service.desc}</p>
+                <div className="w-16 h-16 bg-[#fafafa] rounded-2xl flex items-center justify-center border border-gray-100 shadow-sm mb-8 group-hover:scale-110 group-hover:bg-black transition-all duration-300">
+                  {React.cloneElement(service.icon as React.ReactElement, { className: 'w-8 h-8 text-black group-hover:text-white transition-colors duration-300' })}
+                </div>
+
+                <h2 className="text-2xl font-bold mb-4 text-black tracking-tight leading-tight">{service.title}</h2>
+                <p className="text-gray-500 grotesk mb-8 leading-relaxed flex-grow text-sm">{service.desc}</p>
+
+                <div>
+                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4 grotesk">
+                    Ce que cela inclut
                   </div>
-                  <div className="lg:col-span-2">
-                    <ul className="space-y-2">
-                      {service.details.map((detail, detailIdx) => (
-                        <li key={detailIdx} className="flex items-start">
-                          <span className="text-white/60 mr-3 mt-1">•</span>
-                          <span className="text-gray-300 font-light">{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="space-y-3">
+                    {service.details.map((detail, detailIdx) => (
+                      <li key={detailIdx} className="flex items-start">
+                        <span className="text-black mr-3 text-sm font-bold">✦</span>
+                        <span className="text-gray-600 font-light grotesk text-sm">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             ))}
@@ -197,32 +185,38 @@ export default function ServicesPage() {
       </section>
 
       {/* Notre processus */}
-      <section className="py-16 px-4 border-t border-white/5">
+      <section className="py-24 px-4 bg-white border-t border-gray-100 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="max-w-4xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
-          <motion.h2
-            className="text-3xl font-normal mb-12 text-center text-white/90"
-            variants={fadeUp}
-            custom={0}
-          >
-            Notre Processus
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="text-center mb-16 md:mb-24">
+            <motion.h2
+              className="text-4xl md:text-6xl font-medium mb-6 text-black serif italic"
+              variants={fadeUp}
+              custom={0}
+            >
+              Notre Processus
+            </motion.h2>
+            <motion.p className="text-gray-500 grotesk max-w-xl mx-auto text-lg" variants={fadeUp} custom={1}>
+              Une méthodologie éprouvée pour garantir le succès de chaque projet.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {process.map((step, idx) => (
               <motion.div
                 key={step.step}
-                className="bg-white/3 rounded-2xl p-6 hover:bg-white/5 transition-colors"
+                className="bg-[#fafafa] rounded-[2rem] p-8 md:p-10 border border-gray-100/50 hover:bg-white hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:border-gray-200 transition-all duration-300"
                 variants={fadeUp}
-                custom={idx + 1}
+                custom={idx + 2}
               >
-                <div className="text-2xl font-light text-white/60 mb-3">{step.step}</div>
-                <h3 className="text-lg font-semibold mb-2 text-white/90">{step.title}</h3>
-                <p className="text-gray-300 text-sm font-light">{step.desc}</p>
+                <div className="text-5xl font-light text-gray-200 mb-6 serif italic tracking-tighter">{step.step}</div>
+                <h3 className="text-xl font-bold mb-3 text-black">{step.title}</h3>
+                <p className="text-gray-500 text-sm grotesk leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -230,34 +224,32 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 border-t border-white/5">
+      <section className="py-24 px-4 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="max-w-md mx-auto text-center"
+          className="max-w-3xl mx-auto text-center"
         >
-          <motion.h2
-            className="text-2xl font-normal mb-4 text-white/90"
+          <motion.div
             variants={fadeUp}
             custom={0}
+            className="bg-white rounded-[3rem] p-12 py-20 border border-gray-100 shadow-[0_4px_40px_rgba(0,0,0,0.03)]"
           >
-            Prêt à commencer ?
-          </motion.h2>
-          <motion.p
-            className="text-gray-300 mb-6 font-light"
-            variants={fadeUp}
-            custom={1}
-          >
-            Discutons de votre projet et trouvons la solution parfaite
-          </motion.p>
-          <motion.div variants={fadeUp} custom={2}>
+            <h2 className="text-4xl md:text-5xl font-medium mb-6 text-black serif italic">
+              Prêt à commencer ?
+            </h2>
+            <p className="text-gray-500 mb-10 text-lg md:text-xl grotesk max-w-lg mx-auto">
+              Discutons de votre projet et trouvons la solution parfaite.
+            </p>
             <Link
               href="/contact"
-              className="inline-block bg-white/90 text-black font-normal px-7 py-3 rounded-full border border-white/20 hover:bg-white transition-colors"
+              className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-black text-white rounded-full text-lg font-bold overflow-hidden transition-all hover:scale-[1.02] shadow-[0_10px_40px_rgba(0,0,0,0.1)] grotesk"
             >
-              Nous contacter
+              <span className="relative z-10">Nous consulter</span>
+              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 bg-gray-800 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"></div>
             </Link>
           </motion.div>
         </motion.div>

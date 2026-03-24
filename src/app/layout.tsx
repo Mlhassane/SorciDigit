@@ -15,10 +15,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: 'Sorci Digit - Agence de Marketing Digital et Communication',
-  description: 'Sorci Digit, votre agence de marketing digital. Boostez votre présence en ligne avec nos services SEO, branding et réseaux sociaux.',
-  keywords: 'marketing digital, SEO, branding, réseaux sociaux, agence communication,Niger, Afrique',
+  title: 'Sorci Digit | Agence web, mobile et branding en Afrique',
+  description: "Agence de développement spécialisée dans la création de sites internet, d'applications mobiles (iOS/Android) et branding stratégique pour les entreprises et startups d'Afrique de l'Ouest.",
+  keywords: 'agence web afrique, developpement mobile, création site web, branding, marketing digital, abidjan, dakar, niamey, développeur application mobile',
   authors: [{ name: 'Sorci Digit' }],
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: "https://www.sorcidigit.com",
+    siteName: "Sorci Digit",
+    title: "Sorci Digit | Vos solutions digitales sur mesure",
+    description: "Nous transformons vos idées complexes en expériences fluides et rentables.",
+  },
 };
 export default function RootLayout({
   children,
@@ -26,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
 

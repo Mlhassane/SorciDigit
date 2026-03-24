@@ -140,40 +140,39 @@ export default function Hero() {
           <Beam />
           <motion.div
             className={cn(
-              'from-foreground/60  via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 max-w-5xl bg-gradient-to-r bg-clip-text text-center text-6xl font-extrabold tracking-tighter text-transparent sm:text-6xl xl:text-6xl/none',
-
+              'from-foreground/60  via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 max-w-5xl bg-gradient-to-r bg-clip-text text-center text-5xl md:text-6xl font-extrabold tracking-tighter text-transparent sm:text-6xl xl:text-6xl/none mb-4',
             )}
-
           >
             <TextAnimate className='text-black serif' animation="blurInUp" delay={0}>
-              Agence marketing digital, branding et création de sites
+              Développement Web & Mobile, Branding stratégique
             </TextAnimate>
           </motion.div>
         </div>
         <motion.div
-          className="mx-auto mt-5 max-w-3xl text-center"
+          className="mx-auto mt-6 max-w-3xl text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.3 }}
         >
-          <TextAnimate className="text-muted-foreground text-xl grotesk" animation="blurIn" delay={0.5}>
-            On crée du contenu qui attire des clients et des sites qui convertissent.
+          <TextAnimate className="font-medium text-black text-xl md:text-2xl tracking-tight mb-6 serif italic leading-tight" animation="blurIn" delay={0.5}>
+            Nous accompagnons les entreprises et startups d'Afrique de l'Ouest dans la conception de solutions digitales sur mesure.
           </TextAnimate>
-          <p className="text-muted-foreground text-xl">
-
+          <p className="text-muted-foreground text-lg grotesk max-w-2xl mx-auto">
+            De la stratégie de marque à l'application mobile, nous transformons vos idées complexes en expériences fluides, rentables et mémorables.
           </p>
         </motion.div>
         <motion.div
-          className="mt-8 flex justify-center gap-3"
+          className="mt-10 flex justify-center gap-3"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 3.5 }}
         >
-          <Link className='cursor' href="/">
+          <Link className='cursor-pointer' href="/contact">
             <motion.button
               whileHover={{ scale: 1.05, translateX: 0.3 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-b from-black to-black/80 rounded-full text-sm text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] pointer p-3 ">
+              className="bg-gradient-to-b from-black to-black/80 rounded-full text-base font-bold text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] px-8 py-4 flex items-center gap-2 grotesk hover:shadow-xl transition-all">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               Réserver un appel
             </motion.button>
           </Link>

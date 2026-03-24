@@ -71,7 +71,7 @@ export default function Gallery() {
 
 
 
-            <WrapButtonDemo className="mt-10 grotesk font-bold" href="/docs/get-started">
+            <WrapButtonDemo className="mt-10 grotesk font-bold" href="/get-started">
               <Globe className="animate-spin" />
               Quel est votre projet ?
             </WrapButtonDemo>

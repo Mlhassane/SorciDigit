@@ -119,58 +119,25 @@ export default function ContactPage() {
         >
           <motion.span
             variants={fadeUp} custom={0}
-            className="inline-block text-[10px] md:text-xs font-bold tracking-[0.3em] text-gray-400 uppercase mb-6 grotesk"
+            className="inline-block text-[10px] md:text-xs font-bold text-gray-400 uppercase mb-6 grotesk"
           >
-            Contact
+         On commence ici
           </motion.span>
           <motion.h1
             className="text-6xl md:text-[6rem] font-medium mb-6 text-black tracking-tight serif italic leading-[1]"
             variants={fadeUp}
             custom={1}
           >
-            Démarrons ce <span className="not-italic block md:inline font-bold">projet.</span>
+            Et si on parlait de votre <span className="italic block md:inline font-semi-bold">projet.</span>
           </motion.h1>
           <motion.p
-            className="text-gray-500 text-lg md:text-2xl max-w-2xl grotesk leading-relaxed"
+            className="text-gray-500 text-lg md:text-2xl max-w-2xl "
             variants={fadeUp}
             custom={2}
           >
             Vous avez une idée ambitieuse ? Nous avons l'expertise pour la réaliser. Discutons de vos objectifs.
           </motion.p>
         </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-
-          {/* Left Column: Contact Methods */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="lg:col-span-4 flex flex-col gap-6"
-          >
-            {contactMethods.map((method, idx) => (
-              <motion.a
-                key={method.title}
-                href={method.href}
-                className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all duration-300 group block"
-                variants={fadeUp}
-                custom={idx + 3}
-              >
-                <div className="w-14 h-14 bg-[#fafafa] rounded-2xl flex items-center justify-center border border-gray-100 shadow-sm mb-6 group-hover:scale-110 group-hover:bg-black group-hover:text-white transition-all duration-300">
-                  {/* Clone element to change text color on hover via group-hover */}
-                  {React.cloneElement(method.icon, { className: 'w-6 h-6 text-black group-hover:text-white transition-colors duration-300' })}
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-black">{method.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 grotesk">{method.desc}</p>
-                <span className="text-black font-semibold text-sm inline-flex items-center gap-2 grotesk relative">
-                  {method.value}
-                  <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                </span>
-              </motion.a>
-            ))}
-          </motion.div>
-
-          {/* Right Column: Form */}
           <motion.div
             initial="hidden"
             animate="visible"
@@ -182,7 +149,7 @@ export default function ContactPage() {
               custom={4}
               className="bg-white rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-12 border border-gray-100 shadow-[0_4px_40px_rgba(0,0,0,0.03)]"
             >
-              <h2 className="text-3xl font-bold mb-8 text-black serif italic">Parlez-nous de vous</h2>
+              <h2 className="text-3xl font-bold mb-8 text-black serif italic">Dites nous plus sur votre projet</h2>
 
               {isSubmitted && (
                 <motion.div
@@ -316,15 +283,14 @@ export default function ContactPage() {
                     {!isSubmitting && <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />}
                     <div className="absolute inset-0 bg-gray-800 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"></div>
                   </button>
-                  <p className="mt-4 text-xs font-medium text-emerald-600 flex items-center gap-1.5 grotesk">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> Réponse garantie sous 24 heures ouvrées. Vos données sont confidentielles.
+                  <p className="mt-4 text-xs text-gray-400">
+                    Vos données sont confidentielles. Nous détestons le spam autant que vous.
                   </p>
                 </div>
               </form>
             </motion.div>
           </motion.div>
 
-        </div>
       </div>
     </div>
   )
