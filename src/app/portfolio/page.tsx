@@ -20,9 +20,9 @@ const mobileAppsFallback: any[] = [
       "L'application mobile de référence pour optimiser chaque étape du cycle agricole, des semences à la vente. Gérez vos rendements directement depuis votre smartphone avec notre intelligence artificielle embarquée.",
     icon: "🌾",
     screenshots: [
-      "from-emerald-400 to-green-300",
-      "from-emerald-300 to-green-200",
-      "from-green-200 to-emerald-100",
+      "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?q=80&w=600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=600&h=1200&fit=crop",
     ],
   },
   {
@@ -36,9 +36,9 @@ const mobileAppsFallback: any[] = [
       "Plateforme de télémédecine complète. Consultez des médecins en vidéo, prenez vos rendez-vous instantanément et recevez vos ordonnances sécurisées sur votre téléphone.",
     icon: "🏥",
     screenshots: [
-      "from-blue-400 to-sky-300",
-      "from-blue-300 to-sky-200",
-      "from-sky-200 to-blue-100",
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&h=1200&fit=crop",
     ],
   },
 ]
@@ -53,6 +53,8 @@ const webProjectsFallback: any[] = [
     icon: "📄",
     technologies: ["Vue.js", "Python", "OCR", "AWS"],
     color: "bg-blue-50 text-blue-500",
+    screenshots: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&h=800&fit=crop"],
+    link: "https://docuflow.sorcidigit.com",
   },
   {
     id: "ecotrack",
@@ -63,6 +65,8 @@ const webProjectsFallback: any[] = [
     icon: "🌱",
     technologies: ["React", "Node.js", "PostgreSQL", "IoT"],
     color: "bg-emerald-50 text-emerald-500",
+    screenshots: ["https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&h=800&fit=crop"],
+    link: "https://ecotrack.sorcidigit.com",
   },
   {
     id: "startkit",
@@ -73,6 +77,8 @@ const webProjectsFallback: any[] = [
     icon: "🚀",
     technologies: ["Next.js", "Tailwind", "Stripe", "Sanity"],
     color: "bg-orange-50 text-orange-500",
+    screenshots: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&h=800&fit=crop"],
+    link: "https://startkit.sorcidigit.com",
   },
   {
     id: "smartgrenier",
@@ -83,6 +89,8 @@ const webProjectsFallback: any[] = [
     icon: "🏭",
     technologies: ["TensorFlow", "React", "Cloud"],
     color: "bg-purple-50 text-purple-500",
+    screenshots: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&h=800&fit=crop"],
+    link: "https://smartgrenier.sorcidigit.com",
   },
 ]
 

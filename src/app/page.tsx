@@ -26,6 +26,7 @@ export default function Homepage() {
     <>
       <Hero />
       <Features />
+      <Testimonials />
       <Gallery />
     </>
   );

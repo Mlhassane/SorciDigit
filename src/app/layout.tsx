@@ -15,17 +15,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: 'Sorci Digit | Agence web, mobile et branding en Afrique',
-  description: "Agence de développement spécialisée dans la création de sites internet, d'applications mobiles (iOS/Android) et branding stratégique pour les entreprises et startups d'Afrique de l'Ouest.",
-  keywords: 'agence web afrique, developpement mobile, création site web, branding, marketing digital, abidjan, dakar, niamey, développeur application mobile',
+  title: 'Sorci Digit | Agence Digitale en Afrique (Web, Mobile & Branding)',
+  description: "L'agence digitale de référence en Afrique de l'Ouest. Création de sites web haute performance, applications mobiles (iOS/Android) sur mesure et stratégies de branding fortes pour startups et entreprises.",
+  keywords: 'agence digitale afrique, developpement mobile, création site web, branding, marketing digital, abidjan, dakar, niamey, développeur application, agence web',
   authors: [{ name: 'Sorci Digit' }],
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: "https://www.sorcidigit.com",
     siteName: "Sorci Digit",
-    title: "Sorci Digit | Vos solutions digitales sur mesure",
-    description: "Nous transformons vos idées complexes en expériences fluides et rentables.",
+    title: "Sorci Digit | Votre Agence Digitale sur mesure",
+    description: "Nous transformons vos idées complexes en expériences digitales fluides et rentables.",
   },
 };
 export default function RootLayout({

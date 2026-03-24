@@ -12,58 +12,58 @@ const space = Geist({
 
 const testimonials = [
   {
-    text: 'Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.',
+    text: "Sorci Digit a transformé notre vision en une application mobile fluide. L'équipe est très réactive et professionnelle.",
     imageSrc: '/assets/avatars/avatar-1.webp',
-    name: 'Arjun Mehta',
-    username: '@arjdev',
+    name: 'Amadou Diallo',
+    username: '@amadou_d',
   },
   {
-    text: 'Honestly shocked at how smooth the animations and styling are out of the box. Just works.',
+    text: "Le nouveau site e-commerce a fait exploser nos ventes. Un design parfait et une expérience utilisateur au top.",
     imageSrc: '/assets/avatars/avatar-2.webp',
-    name: 'Sara Lin',
-    username: '@sara.codes',
+    name: 'Sophie Konaté',
+    username: '@sophie_k',
   },
   {
-    text: 'Our team launched a client site in 2 days using Mvpblocks. Saved so much time.',
+    text: "Une véritable expertise technique doublée d'un sens aigu du design. C'est l'agence qu'il vous faut.",
     imageSrc: '/assets/avatars/avatar-3.webp',
-    name: 'Devon Carter',
-    username: '@devninja',
+    name: 'Karim S.',
+    username: '@karim_tech',
   },
   {
-    text: 'Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.',
+    text: "Ils ont su comprendre nos besoins et livrer une plateforme B2B robuste et moderne. Bravo à l'équipe !",
     imageSrc: '/assets/avatar-2.webp',
-    name: 'Priya Shah',
-    username: '@priyacodes',
+    name: 'Marie T.',
+    username: '@marie_pro',
   },
   {
-    text: 'Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.',
+    text: "Notre branding n'a jamais été aussi fort. L'identité visuelle créée par Sorci Digit est incroyable.",
     imageSrc: '/assets/avatars/avatar-5.webp',
-    name: 'Leo Martin',
-    username: '@leobuilds',
+    name: 'Léo M.',
+    username: '@leo_create',
   },
   {
-    text: 'Mvpblocks helped us prototype multiple landing pages without writing CSS once.',
+    text: "La digitalisation de nos processus métiers nous a fait gagner un temps précieux. Un investissement très rentable.",
     imageSrc: '/assets/avatars/avatar-6.webp',
-    name: 'Chloe Winters',
-    username: '@chloewinters',
+    name: 'Fatou Diagne',
+    username: '@fatou_d',
   },
   {
-    text: 'As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.',
+    text: "Un accompagnement au top du début à la fin. L'équipe est à l'écoute et propose toujours les meilleures solutions.",
     imageSrc: '/assets/avatars/avatar-7.webp',
-    name: 'Ayaan Malik',
-    username: '@ayaan_dev',
+    name: 'Ayaan M.',
+    username: '@ayaan_m',
   },
   {
-    text: 'Can’t believe how polished the components look. Clients are impressed every time.',
+    text: "Leur approche orientée données a considérablement amélioré notre taux de conversion. Merci Sorci Digit !",
     imageSrc: '/assets/avatar-5.webp',
-    name: 'Monica Reeves',
-    username: '@monicareeves',
+    name: 'Sarah R.',
+    username: '@sarah_r',
   },
   {
-    text: 'This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.',
+    text: "Délais respectés, qualité exceptionnelle et communication transparente. Je recommande vivement.",
     imageSrc: '/assets/avatars/avatar-9.webp',
-    name: 'James Roy',
-    username: '@jamesrdev',
+    name: 'Jean P.',
+    username: '@jean_p',
   },
 ];
 
@@ -154,7 +154,7 @@ const Testimonials = () => {
             >
               <div className="via-primary absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent to-transparent shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
               <div className="via-primary absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent to-transparent shadow-2xl transition-all duration-500 group-hover:h-px"></div>
-              <span className="relative">Testimonials</span>
+              <span className="relative">Témoignages</span>
             </button>
           </div>
           <h2
@@ -180,23 +180,6 @@ const Testimonials = () => {
             className="hidden lg:block"
             duration={17}
           />
-        </div>
-        <div className="-mt-8 flex justify-center">
-          <button
-            onClick={handleShareClick}
-            className="group border-primary/30 bg-background text-foreground hover:border-primary/60 hover:bg-primary/10 relative inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-all active:scale-95"
-          >
-            <div className="via-primary/40 absolute inset-x-0 -top-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent to-transparent" />
-            <div className="via-primary/40 absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent to-transparent" />
-            <svg
-              className="text-primary h-4 w-4"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-            </svg>
-            Share your experience
-          </button>
         </div>
       </div>
     </section>
