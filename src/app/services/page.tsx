@@ -159,7 +159,7 @@ export default function ServicesPage() {
                 custom={idx}
               >
                 <div className="w-16 h-16 bg-[#fafafa] rounded-2xl flex items-center justify-center border border-gray-100 shadow-sm mb-8 group-hover:scale-110 group-hover:bg-black transition-all duration-300">
-                  {React.cloneElement(service.icon as React.ReactElement, { className: 'w-8 h-8 text-black group-hover:text-white transition-colors duration-300' })}
+                  {React.cloneElement(service.icon as React.ReactElement<any>, { className: 'w-8 h-8 text-black group-hover:text-white transition-colors duration-300' })}
                 </div>
 
                 <h2 className="text-2xl font-bold mb-4 text-black tracking-tight leading-tight">{service.title}</h2>
