@@ -17,8 +17,9 @@ const mobileAppsFallback: any[] = [
     rating: "4.8",
     rating_count: "1.2k",
     description:
-      "L'application mobile de référence pour optimiser chaque étape du cycle agricole, des semences à la vente. Gérez vos rendements directement depuis votre smartphone avec notre intelligence artificielle embarquée.",
+      "L'application mobile de référence pour optimiser chaque étape du cycle agricole, des semences à la vente. Gérez vos rendements ou parcelles directement avec notre intelligence artificielle.",
     icon: "🌾",
+    link: "https://agrona.sorcidigit.com/download.apk",
     screenshots: [
       "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=600&h=1200&fit=crop",
       "https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?q=80&w=600&h=1200&fit=crop",
@@ -35,10 +36,28 @@ const mobileAppsFallback: any[] = [
     description:
       "Plateforme de télémédecine complète. Consultez des médecins en vidéo, prenez vos rendez-vous instantanément et recevez vos ordonnances sécurisées sur votre téléphone.",
     icon: "🏥",
+    link: "https://healthconnect.sorcidigit.com/download.apk",
     screenshots: [
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=1200&fit=crop",
       "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=600&h=1200&fit=crop",
       "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&h=1200&fit=crop",
+    ],
+  },
+  {
+    id: "payflow",
+    name: "PayFlow",
+    developer: "Sorci Digit",
+    category: "Finance",
+    rating: "4.9",
+    rating_count: "3.4k",
+    description:
+      "Gérez vos finances en toute simplicité. Suivez vos dépenses, transférez de l'argent instantanément et accédez à vos statistiques mensuelles dans une interface sécurisée et intuitive.",
+    icon: "💸",
+    link: "https://payflow.sorcidigit.com/download.apk",
+    screenshots: [
+      "https://images.unsplash.com/photo-1563986768494-4dee2763ff0f?q=80&w=600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=600&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&h=1200&fit=crop",
     ],
   },
 ]
