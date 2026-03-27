@@ -245,7 +245,7 @@ export default function PortfolioPage() {
                   >
                     {/* App Header */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8 px-2 md:px-4">
-                      <div className="flex items-center gap-5 md:gap-6">
+                      <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto min-w-0">
                         {/* Icon Container with App Store Aesthetic */}
                         <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[1.2rem] sm:rounded-[1.8rem] bg-gradient-to-br from-white to-gray-50 flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white/80 flex-shrink-0 overflow-hidden relative group">
                           <div className="absolute inset-0 bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
@@ -257,18 +257,18 @@ export default function PortfolioPage() {
                             </span>
                           )}
                         </div>
-                        <div className="flex-1 min-w-0">
+                        <div className="flex-1 min-w-0 overflow-hidden">
                           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black leading-tight tracking-tight truncate">
                             {project.name}
                           </h3>
-                          <p className="text-gray-400 text-xs sm:text-sm md:text-base font-semibold grotesk mt-0.5 tracking-tight">
+                          <p className="text-gray-400 text-xs sm:text-sm md:text-base font-semibold grotesk mt-0.5 tracking-tight truncate">
                             {project.developer || "Sorci Digit"}
                           </p>
                           <div className="flex items-center gap-1 mt-1.5">
                             {[...Array(5)].map((_, i) => (
                               <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
                             ))}
-                            <span className="text-[10px] sm:text-xs text-gray-400 font-bold ml-1.5 grotesk">
+                            <span className="text-[10px] sm:text-xs text-gray-400 font-bold ml-1.5 grotesk truncate">
                               {project.rating_count || project.ratingCount || "0"} notes
                             </span>
                           </div>
@@ -379,10 +379,10 @@ export default function PortfolioPage() {
                   <p className="text-gray-400 grotesk">Chargement des projets...</p>
                 </div>
               ) : (
-                webProjects.map((project, idx) => (
+                webProjects.map((project) => (
                   <div
                     key={project.id}
-                    className={`${idx === 0 || idx === 3 ? "md:col-span-2" : ""} group`}
+                    className="group"
                   >
                     <div className="bg-white rounded-[2rem] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-500 overflow-hidden h-full flex flex-col">
 
@@ -423,8 +423,7 @@ export default function PortfolioPage() {
                         <Link
                           href={project.link || "#"}
                           target={project.link ? "_blank" : undefined}
-                          className="block relative overflow-hidden bg-gray-100 border-b border-gray-100 cursor-pointer"
-                          style={{ height: idx === 0 || idx === 3 ? "280px" : "200px" }}
+                          className="block relative overflow-hidden bg-gray-100 border-b border-gray-100 cursor-pointer h-[220px] sm:h-[240px]"
                         >
                           <img
                             src={project.screenshots![0]}
@@ -442,7 +441,11 @@ export default function PortfolioPage() {
 
                       {/* Project Content */}
                       <div className="p-5 sm:p-6 md:p-8 flex-1 flex flex-col">
-                        <div className="flex items-center gap-4 mb-4">
+                        <Link 
+                          href={project.link || "#"} 
+                          target={project.link ? "_blank" : undefined}
+                          className="flex items-center gap-4 mb-4 group/title"
+                        >
                           <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-xl ${project.color || "bg-gray-50 text-gray-500"} border border-gray-100/50 shadow-sm flex-shrink-0 overflow-hidden`}>
                             {project.icon?.startsWith("http") || project.icon?.startsWith("/") ? (
                               <img src={project.icon} alt="" className="w-full h-full object-cover" />
@@ -454,11 +457,16 @@ export default function PortfolioPage() {
                             <span className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest grotesk block truncate">
                               {project.category}
                             </span>
-                            <h3 className="text-xl sm:text-2xl font-bold text-black tracking-tight leading-loose truncate">
+                            <h3 className="text-xl sm:text-2xl font-bold text-black tracking-tight leading-loose truncate group-hover/title:text-blue-600 transition-colors">
                               {project.name}
                             </h3>
+                            {project.link && (
+                              <span className="text-[10px] text-blue-500 font-medium truncate block -mt-1 opacity-0 group-hover/title:opacity-100 transition-opacity">
+                                {project.link.replace(/^https?:\/\//, "")}
+                              </span>
+                            )}
                           </div>
-                        </div>
+                        </Link>
 
                         <p className="text-gray-500 text-sm md:text-base grotesk mb-6 leading-relaxed flex-1">
                           {project.description}
