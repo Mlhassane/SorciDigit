@@ -183,7 +183,7 @@ export default function PortfolioPage() {
             Réalisations
           </motion.span>
           <motion.h1
-            className="text-5xl md:text-[6rem] font-medium mb-6 text-black tracking-tight serif italic leading-[1]"
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-[6rem] font-medium mb-6 text-black tracking-tight serif italic leading-[1.1] md:leading-[1]"
             variants={fadeUp}
             custom={1}
           >
@@ -203,19 +203,19 @@ export default function PortfolioPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex p-1.5 bg-gray-200/50 backdrop-blur-md rounded-full max-w-sm mx-auto mb-16 border border-gray-200/50"
+          className="flex p-1 sm:p-1.5 bg-gray-200/50 backdrop-blur-md rounded-full max-w-[280px] xs:max-w-sm mx-auto mb-10 sm:mb-16 border border-gray-200/50"
         >
           <button
             onClick={() => setActiveTab("mobile")}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-full font-bold text-sm transition-all duration-300 grotesk ${activeTab === "mobile" ? "bg-white text-black shadow-sm" : "text-gray-500 hover:text-black hover:bg-white/50"}`}
+            className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-3 rounded-full font-bold text-[10px] xs:text-xs sm:text-sm transition-all duration-300 grotesk ${activeTab === "mobile" ? "bg-white text-black shadow-sm" : "text-gray-500 hover:text-black hover:bg-white/50"}`}
           >
-            <Smartphone className="w-4 h-4" /> Applications
+            <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Apps
           </button>
           <button
             onClick={() => setActiveTab("web")}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-full font-bold text-sm transition-all duration-300 grotesk ${activeTab === "web" ? "bg-white text-black shadow-sm" : "text-gray-500 hover:text-black hover:bg-white/50"}`}
+            className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-2 sm:py-3 rounded-full font-bold text-[10px] xs:text-xs sm:text-sm transition-all duration-300 grotesk ${activeTab === "web" ? "bg-white text-black shadow-sm" : "text-gray-500 hover:text-black hover:bg-white/50"}`}
           >
-            <Monitor className="w-4 h-4" /> Web & Plateformes
+            <Monitor className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Web
           </button>
         </motion.div>
 
@@ -246,43 +246,51 @@ export default function PortfolioPage() {
                     {/* App Header */}
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8 px-2 md:px-4">
                       <div className="flex items-center gap-5 md:gap-6">
-                        <div className="w-24 h-24 md:w-28 md:h-28 rounded-[1.8rem] bg-[#fafafa] flex items-center justify-center text-4xl md:text-5xl shadow-sm border border-gray-100 flex-shrink-0">
-                          {project.icon}
+                        {/* Icon Container with App Store Aesthetic */}
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[1.2rem] sm:rounded-[1.8rem] bg-gradient-to-br from-white to-gray-50 flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white/80 flex-shrink-0 overflow-hidden relative group">
+                          <div className="absolute inset-0 bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                          {project.icon?.startsWith("http") || project.icon?.startsWith("/") ? (
+                            <img src={project.icon} alt={project.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <span className="text-3xl sm:text-4xl md:text-5xl drop-shadow-sm select-none">
+                              {project.icon}
+                            </span>
+                          )}
                         </div>
-                        <div>
-                          <h3 className="text-2xl md:text-3xl font-bold text-black leading-tight tracking-tight">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black leading-tight tracking-tight truncate">
                             {project.name}
                           </h3>
-                          <p className="text-gray-400 text-sm md:text-base font-medium grotesk mt-1">
+                          <p className="text-gray-400 text-xs sm:text-sm md:text-base font-semibold grotesk mt-0.5 tracking-tight">
                             {project.developer || "Sorci Digit"}
                           </p>
-                          <div className="flex items-center gap-1 mt-2">
+                          <div className="flex items-center gap-1 mt-1.5">
                             {[...Array(5)].map((_, i) => (
-                              <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                              <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
                             ))}
-                            <span className="text-xs text-gray-400 font-bold ml-2 grotesk">
+                            <span className="text-[10px] sm:text-xs text-gray-400 font-bold ml-1.5 grotesk">
                               {project.rating_count || project.ratingCount || "0"} notes
                             </span>
                           </div>
                         </div>
                       </div>
-                      <div className="w-full sm:w-auto flex flex-col items-center">
+                      <div className="w-full sm:w-auto flex flex-col items-center sm:items-end">
                         {project.link ? (
                           <a
                             href={project.link}
                             target="_blank"
                             download={project.link.includes('supabase') || project.link.endsWith('.apk')}
-                            className="w-full sm:w-auto bg-black hover:bg-gray-900 text-white font-bold px-8 py-3 rounded-full transition-colors grotesk flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
+                            className="w-full sm:w-auto bg-black hover:bg-gray-800 text-white font-bold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 grotesk flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(0,0,0,0.1)] active:scale-95"
                           >
                             <Download className="w-4 h-4" />
                             Télécharger
                           </a>
                         ) : (
-                          <button className="w-full sm:w-auto bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#0ea5e9] font-bold px-8 py-3 rounded-full transition-colors grotesk flex items-center justify-center gap-2">
+                          <button className="w-full sm:w-auto bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#0ea5e9] font-extrabold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-colors grotesk flex items-center justify-center gap-2">
                             OBTENIR
                           </button>
                         )}
-                        <p className="text-[10px] text-gray-400 text-center mt-2 grotesk">
+                        <p className="text-[9px] sm:text-[10px] text-gray-400 text-center sm:text-right mt-2 grotesk font-medium tracking-tight">
                           {project.link ? "Téléchargement direct · APK" : "Bientôt disponible"}
                         </p>
                       </div>
@@ -379,20 +387,20 @@ export default function PortfolioPage() {
                     <div className="bg-white rounded-[2rem] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-500 overflow-hidden h-full flex flex-col">
 
                       {/* Browser Bar */}
-                      <div className="bg-[#fafafa] px-6 py-4 border-b border-gray-100 flex items-center gap-2">
-                        <div className="flex gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-400" />
-                          <div className="w-3 h-3 rounded-full bg-amber-400" />
-                          <div className="w-3 h-3 rounded-full bg-green-400" />
+                      <div className="bg-[#fafafa] px-4 py-3 sm:px-6 sm:py-4 border-b border-gray-100 flex items-center gap-2">
+                        <div className="flex gap-1.5 sm:gap-2">
+                          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-400" />
+                          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-amber-400" />
+                          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-400" />
                         </div>
-                        <div className="ml-4 flex-1 h-8 bg-white rounded-md border border-gray-200/50 flex items-center px-3 gap-2 max-w-sm">
+                        <div className="ml-2 sm:ml-4 flex-1 h-7 sm:h-8 bg-white rounded-md border border-gray-200/50 flex items-center px-2 sm:px-3 gap-2 max-w-[120px] xs:max-w-xs sm:max-w-sm">
                           {/* Favicon */}
-                          {project.icon?.startsWith("http") ? (
-                            <img src={project.icon} alt="" className="w-4 h-4 rounded-sm flex-shrink-0" />
+                          {project.icon?.startsWith("http") || project.icon?.startsWith("/") ? (
+                            <img src={project.icon} alt="" className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-sm flex-shrink-0 object-contain" />
                           ) : (
-                            <span className="text-sm leading-none flex-shrink-0">{project.icon}</span>
+                            <span className="text-[10px] sm:text-sm leading-none flex-shrink-0">{project.icon}</span>
                           )}
-                          <span className="text-[11px] text-gray-400 font-mono tracking-tighter truncate">
+                          <span className="text-[9px] sm:text-[11px] text-gray-400 font-mono tracking-tighter truncate">
                             {project.link
                               ? project.link.replace(/^https?:\/\//, "")
                               : `sorcidigit.com/projects/${project.id}`}
@@ -403,9 +411,9 @@ export default function PortfolioPage() {
                             href={project.link}
                             target="_blank"
                             onClick={e => e.stopPropagation()}
-                            className="ml-auto flex-shrink-0 flex items-center gap-1.5 bg-black text-white text-xs font-bold px-3 py-1.5 rounded-lg grotesk hover:bg-gray-800 transition-colors"
+                            className="ml-auto flex-shrink-0 flex items-center gap-1 bg-black text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg grotesk hover:bg-gray-800 transition-colors"
                           >
-                            <ExternalLink className="w-3 h-3" /> Visiter
+                            <ExternalLink className="w-3 h-3" /> <span className="hidden xs:inline">Visiter</span>
                           </Link>
                         )}
                       </div>
@@ -433,20 +441,20 @@ export default function PortfolioPage() {
                       )}
 
                       {/* Project Content */}
-                      <div className="p-6 md:p-8 flex-1 flex flex-col">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xl ${project.color || "bg-gray-50 text-gray-500"} border border-gray-100/50 shadow-sm flex-shrink-0`}>
-                            {project.icon?.startsWith("http") ? (
-                              <img src={project.icon} alt="" className="w-6 h-6 rounded" />
+                      <div className="p-5 sm:p-6 md:p-8 flex-1 flex flex-col">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-xl ${project.color || "bg-gray-50 text-gray-500"} border border-gray-100/50 shadow-sm flex-shrink-0 overflow-hidden`}>
+                            {project.icon?.startsWith("http") || project.icon?.startsWith("/") ? (
+                              <img src={project.icon} alt="" className="w-full h-full object-cover" />
                             ) : (
-                              project.icon
+                              <span className="select-none">{project.icon}</span>
                             )}
                           </div>
-                          <div>
-                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest grotesk block">
+                          <div className="min-w-0">
+                            <span className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest grotesk block truncate">
                               {project.category}
                             </span>
-                            <h3 className="text-2xl font-bold text-black tracking-tight leading-none">
+                            <h3 className="text-xl sm:text-2xl font-bold text-black tracking-tight leading-loose truncate">
                               {project.name}
                             </h3>
                           </div>

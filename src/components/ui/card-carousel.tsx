@@ -40,9 +40,13 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 400px;
-    /* height: 400px; */
-    /* margin: 20px; */
+    width: 280px;
+  }
+  
+  @media (min-width: 768px) {
+    .swiper-slide {
+      width: 400px;
+    }
   }
   
   .swiper-slide img {
@@ -59,7 +63,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   }
   `;
   return (
-    <section className="w-ace-y-4">
+    <section className="w-full">
       <style>{css}</style>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -68,19 +72,16 @@ export const CardCarousel: React.FC<CarouselProps> = ({
         className="border-secondary/50 mx-auto w-full max-w-4xl rounded-[24px] border p-2 shadow-sm md:rounded-t-[44px]"
       >
         <div className="from-secondary/10 to-card relative mx-auto flex w-full flex-col rounded-[24px] border bg-gradient-to-b p-2 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset] md:items-start md:gap-8 md:rounded-t-[40px] md:rounded-b-[20px] md:p-2">
-          <div className="flex flex-col justify-center pt-14 pb-2 pl-4 md:items-center">
-            <div className="flex gap-2">
-              <div>
-
-                <p >Nous travaillons beaucoup pour rendre les choses plus <span className='font-bold '>faciles</span> <br /> plus <span className='font-bold' >accessibles</span> et surtout à <span className='font-bold' >moindre coût</span> </p>
-              </div>
-            </div>
+          <div className="flex flex-col justify-center pt-10 pb-2 px-4 md:items-center w-full">
+            <p className="text-center text-sm md:text-base text-gray-600 max-w-xl mx-auto">
+              Nous travaillons sans relâche pour rendre vos solutions plus <span className='font-bold text-black'>faciles</span>, plus <span className='font-bold text-black'>accessibles</span> et surtout à <span className='font-bold text-black'>moindre coût</span>.
+            </p>
           </div>
 
-          <div className="flex w-full items-center justify-center gap-4">
+          <div className="flex w-full items-center justify-center gap-4 py-8">
             <div className="w-full">
               <Swiper
-                spaceBetween={50}
+                spaceBetween={20}
                 autoplay={{
                   delay: autoplayDelay,
                   disableOnInteraction: false,
@@ -91,7 +92,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                 loop={true}
                 slidesPerView={'auto'}
                 coverflowEffect={{
-                  rotate: 0,
+                  rotate: 5,
                   stretch: 0,
                   depth: 100,
                   modifier: 2.5,
@@ -110,32 +111,14 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                 {images.map((image, index) => (
                   <SwiperSlide key={index}>
                     <motion.div
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="size-full rounded-3xl flex items-center justify-center"
+                      className="size-full rounded-2xl flex items-center justify-center overflow-hidden shadow-2xl"
                     >
                       <img
                         src={image.src}
-                        width={500}
-                        height={500}
-                        className="rounded-xl w-full h-auto max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl"
+                        className="rounded-xl w-full h-auto object-cover"
                         alt={image.alt}
                       />
                     </motion.div>
-                  </SwiperSlide>
-                ))}
-                {images.map((image, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="size-full rounded-3xl">
-                      <img
-                        src={image.src}
-                        width={200}
-                        height={200}
-                        className="size-full rounded-xl"
-                        alt={image.alt}
-                      />
-                    </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
