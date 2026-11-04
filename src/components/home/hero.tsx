@@ -143,7 +143,7 @@ export default function Hero() {
               'from-foreground/60  via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 max-w-5xl bg-gradient-to-r bg-clip-text text-center text-5xl md:text-6xl font-extrabold tracking-tighter text-transparent sm:text-6xl xl:text-6xl/none mb-4',
             )}
           >
-            <TextAnimate className='text-black serif' animation="blurInUp" delay={0}>
+            <TextAnimate as="h1" className='text-black serif' animation="blurInUp" delay={0}>
               Développement Web & Mobile, Branding stratégique
             </TextAnimate>
           </motion.div>
