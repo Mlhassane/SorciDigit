@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: "Nous transformons vos idées complexes en expériences digitales fluides et rentables.",
     images: [
       {
-        url: "/1.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Sorci Digit - Agence Digitale en Afrique",
@@ -46,12 +46,22 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sorci Digit | Votre Agence Digitale sur mesure",
     description: "Nous transformons vos idées complexes en expériences digitales fluides et rentables.",
-    images: ["/1.png"],
+    images: ["/og-image.png"],
     creator: "@sorcidigit",
   },
   alternates: {
     canonical: siteUrl,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48 64x64 128x128 256x256", type: "image/x-icon" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -76,12 +86,20 @@ export default function RootLayout({
                   "@id": `${siteUrl}#organization`,
                   name: "Sorci Digit",
                   url: siteUrl,
-                  logo: `${siteUrl}/1.png`,
+                  logo: {
+                    "@type": "ImageObject",
+                    url: `${siteUrl}/1.png`,
+                    width: 736,
+                    height: 736,
+                  },
+                  image: `${siteUrl}/1.png`,
                   description: "L'agence digitale de référence en Afrique de l'Ouest. Création de sites web haute performance, applications mobiles (iOS/Android) sur mesure et stratégies de branding fortes pour startups et entreprises.",
+                  foundingLocation: "Maradi, Niger",
                   address: {
                     "@type": "PostalAddress",
                     addressCountry: "NE",
-                    addressRegion: "Niamey",
+                    addressRegion: "Maradi",
+                    addressLocality: "Maradi",
                   },
                   contactPoint: {
                     "@type": "ContactPoint",
@@ -89,7 +107,13 @@ export default function RootLayout({
                     contactType: "customer service",
                     availableLanguage: ["fr", "en"],
                   },
-                  sameAs: [],
+                  sameAs: [
+                    "https://twitter.com/sorci_digit",
+                    "https://instagram.com/sorci_digit",
+                    "https://www.linkedin.com/company/sorci-digit/",
+                    "https://www.facebook.com/sorcidigit",
+                    "https://wa.me/22777042181",
+                  ],
                 },
                 {
                   "@type": "WebSite",
@@ -106,16 +130,20 @@ export default function RootLayout({
                   },
                 },
                 {
-                  "@type": "LocalBusiness",
+                  "@type": "ProfessionalService",
                   "@id": `${siteUrl}#localbusiness`,
                   name: "Sorci Digit",
                   image: `${siteUrl}/1.png`,
+                  logo: `${siteUrl}/1.png`,
                   url: siteUrl,
+                  email: "contact@sorcidigit.com",
                   telephone: "+22777042181",
+                  priceRange: "€€",
                   address: {
                     "@type": "PostalAddress",
                     addressCountry: "NE",
-                    addressRegion: "Niamey",
+                    addressRegion: "Maradi",
+                    addressLocality: "Maradi",
                   },
                   description: "Agence digitale spécialisée dans le développement web, mobile, branding et stratégie digitale en Afrique de l'Ouest.",
                   openingHoursSpecification: [
