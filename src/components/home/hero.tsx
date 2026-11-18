@@ -113,7 +113,7 @@ export default function Hero() {
             Stratégie, design et technologie. Nous accompagnons les entreprises ambitieuses dans leur transformation digitale.
           </TextAnimate>
           <p className="text-muted-foreground text-lg grotesk max-w-2xl mx-auto">
-            De la stratégie de marque à l'application mobile, nous concevons des solutions sur mesure pour les entreprises et startups d'Afrique de l'Ouest — fluides, rentables et mémorables.
+            De la stratégie de marque à l'application mobile, nous concevons des solutions sur mesure pour les entreprises et startups d'Afrique de l'Ouest — fluides, rentables et mémorables
           </p>
         </motion.div>
         <motion.div
