@@ -1,5 +1,8 @@
 import { Metadata } from "next"
 import PortfolioPageClient from "./page-client"
+import { getProjects } from "@/lib/cms-server"
+
+export const revalidate = 300
 
 export const metadata: Metadata = {
   title: "Portfolio | Réalisations Web & Mobile Sorci Digit",
@@ -25,6 +28,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function PortfolioPage() {
-  return <PortfolioPageClient />
+export default async function PortfolioPage() {
+  const projects = await getProjects()
+  return <PortfolioPageClient initialProjects={projects} />
 }

@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-2.5 text-sm text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 font-medium shadow-lg grotesk"
             >
-              Appelez-nous
+              Discutons
             </Link>
           </motion.div>
         </motion.div>
@@ -217,7 +217,7 @@ const Navbar: React.FC = () => {
                     onClick={toggleMenu}
                   >
                     <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                    <span className="relative z-10">Invoquez votre succès</span>
+                    <span className="relative z-10">Discutons de votre projet</span>
                   </Link>
                 </motion.div>
               </motion.div>

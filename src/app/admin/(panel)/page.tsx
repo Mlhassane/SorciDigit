@@ -7,10 +7,13 @@ import {
   Plus, Pencil, Trash2, LogOut, Globe, Smartphone,
   X, Check, AlertTriangle, Loader2, LayoutDashboard,
   Package, Upload, Download, Image as ImageIcon,
-  Sparkles, FileDown, Eye, Store,
+  Sparkles, FileDown, Eye, Store, MessageSquareQuote, Images, Megaphone,
 } from "lucide-react"
 import { getProjects, createProject, updateProject, deleteProject, type Project } from "@/lib/services"
 import { uploadToStorage } from "@/lib/storage"
+import TestimonialsPanel from "@/components/admin/TestimonialsPanel"
+import GalleryPanel from "@/components/admin/GalleryPanel"
+import ActivitiesPanel from "@/components/admin/ActivitiesPanel"
 
 const STORAGE_BUCKET = "projects"
 
@@ -405,7 +408,7 @@ function ProjectModal({ project, onClose, onSave }: {
       : !!(await createProject(form))
     setSaving(false)
     if (ok) onSave()
-    else setErr("Erreur lors de la sauvegarde. Vérifiez votre connexion Supabase.")
+    else setErr("Erreur lors de la sauvegarde. Vérifiez DATABASE_URL / la console Neon.")
   }
 
   return (
@@ -480,7 +483,7 @@ function ProjectModal({ project, onClose, onSave }: {
                   if (!form.name) set("name", name)
                 }} />
               </div>
-              {form.link?.includes("supabase") && (
+              {form.link?.endsWith(".apk") && (
                 <div className="flex items-center gap-2 bg-emerald-100 rounded-xl px-4 py-3">
                   <Download className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
@@ -693,11 +696,13 @@ export default function AdminDashboard() {
   const [editingProject, setEditingProject] = useState<Partial<Project> | null | undefined>(undefined)
   const [deletingProject, setDeletingProject] = useState<Project | null>(null)
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null)
+  const [tab, setTab] = useState<"projets" | "temoignages" | "galerie" | "activites">("projets")
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && sessionStorage.getItem("admin_auth") !== "true")
-      router.replace("/admin/login")
-  }, [router])
+  async function handleLogout() {
+    await fetch("/api/admin/logout", { method: "POST" })
+    router.replace("/admin/login")
+    router.refresh()
+  }
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -744,15 +749,23 @@ export default function AdminDashboard() {
           </div>
         </div>
         <nav className="p-4 flex-1">
-          <button className="w-full flex items-center gap-3 px-4 py-3 bg-black text-white rounded-xl font-bold text-sm grotesk">
-            <LayoutDashboard className="w-4 h-4" /> Tableau de bord
-          </button>
+          {([
+            { id: "projets", label: "Projets", icon: Package },
+            { id: "temoignages", label: "Témoignages", icon: MessageSquareQuote },
+            { id: "galerie", label: "Galerie", icon: Images },
+            { id: "activites", label: "Activités", icon: Megaphone },
+          ] as const).map(({ id, label, icon: Icon }) => (
+            <button key={id} onClick={() => setTab(id)}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm grotesk transition-colors ${tab === id ? "bg-black text-white" : "text-gray-500 hover:text-black hover:bg-gray-50"}`}>
+              <Icon className="w-4 h-4" /> {label}
+            </button>
+          ))}
           <button onClick={() => router.push("/")} className="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-black hover:bg-gray-50 rounded-xl font-bold text-sm grotesk mt-1 transition-colors">
             <Globe className="w-4 h-4" /> Voir le site
           </button>
         </nav>
         <div className="p-4 border-t border-gray-100">
-          <button onClick={() => { sessionStorage.removeItem("admin_auth"); router.push("/admin/login") }}
+          <button onClick={handleLogout}
             className="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-red-500 hover:bg-red-50 rounded-xl font-bold text-sm grotesk transition-colors">
             <LogOut className="w-4 h-4" /> Déconnexion
           </button>
@@ -767,21 +780,36 @@ export default function AdminDashboard() {
           </div>
           <span className="font-bold text-black text-sm">Admin</span>
         </div>
-        <button onClick={() => { sessionStorage.removeItem("admin_auth"); router.push("/admin/login") }} className="text-gray-500 hover:text-red-500 transition-colors">
+        <button onClick={handleLogout} className="text-gray-500 hover:text-red-500 transition-colors">
           <LogOut className="w-5 h-5" />
         </button>
       </header>
 
       <main className="lg:ml-64 pt-16 lg:pt-0 p-6 md:p-10">
 
-        {/* Supabase setup banner */}
-        {!loading && projects.length === 0 && (
+        {/* Mobile tabs */}
+        <div className="lg:hidden flex gap-2 overflow-x-auto pb-1 mb-6 pt-4 -mx-1 px-1">
+          {([
+            { id: "projets", label: "Projets", icon: Package },
+            { id: "temoignages", label: "Témoignages", icon: MessageSquareQuote },
+            { id: "galerie", label: "Galerie", icon: Images },
+            { id: "activites", label: "Activités", icon: Megaphone },
+          ] as const).map(({ id, label, icon: Icon }) => (
+            <button key={id} onClick={() => setTab(id)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold grotesk whitespace-nowrap transition-all ${tab === id ? "bg-black text-white" : "bg-white text-gray-500 border border-gray-100"}`}>
+              <Icon className="w-4 h-4" /> {label}
+            </button>
+          ))}
+        </div>
+
+        {/* DB setup banner */}
+        {tab === "projets" && !loading && projects.length === 0 && (
           <div className="mb-6 flex items-start gap-4 bg-amber-50 border border-amber-200 rounded-2xl px-6 py-4">
             <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <p className="text-sm font-bold text-amber-800 grotesk">Table Supabase non configurée</p>
+              <p className="text-sm font-bold text-amber-800 grotesk">Base de données non configurée</p>
               <p className="text-xs text-amber-600 grotesk mt-1">
-                Exécutez le script SQL dans votre <a href="https://supabase.com/dashboard/project/xteynhrutebkbgxxxaca/sql/new" target="_blank" className="underline font-bold">SQL Editor Supabase</a>, puis créez un bucket Storage public nommé <code className="bg-amber-100 px-1 rounded">projects</code>.
+                Exécutez <code className="bg-amber-100 px-1 rounded">db/schema.sql</code> dans la console SQL Neon, définissez <code className="bg-amber-100 px-1 rounded">DATABASE_URL</code> et <code className="bg-amber-100 px-1 rounded">BLOB_READ_WRITE_TOKEN</code> (Vercel Blob), puis rechargez.
               </p>
             </div>
           </div>
@@ -792,12 +820,16 @@ export default function AdminDashboard() {
           <div>
             <p className="text-[10px] font-bold tracking-[0.3em] text-gray-400 uppercase mb-1 grotesk">Tableau de bord</p>
             <h1 className="text-3xl md:text-4xl font-medium text-black serif italic leading-tight">
-              Mes <span className="not-italic font-bold">Projets.</span>
+              {tab === "projets" && <>Mes <span className="not-italic font-bold">Projets.</span></>}
+              {tab === "temoignages" && <>Mes <span className="not-italic font-bold">Témoignages.</span></>}
+              {tab === "galerie" && <>Ma <span className="not-italic font-bold">Galerie.</span></>}
+              {tab === "activites" && <>Mes <span className="not-italic font-bold">Activités.</span></>}
             </h1>
           </div>
         </div>
 
         {/* Stats */}
+        {tab === "projets" && (
         <div className="grid grid-cols-3 gap-4 mb-8">
           {[
             { label: "Total", value: projects.length, icon: <Package className="w-5 h-5" />, bg: "bg-white" },
@@ -811,8 +843,10 @@ export default function AdminDashboard() {
             </div>
           ))}
         </div>
+        )}
 
         {/* Table */}
+        {tab === "projets" && (
         <div className="bg-white rounded-[2rem] border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.03)] overflow-hidden">
           <div className="px-6 py-5 border-b border-gray-50 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">
@@ -872,6 +906,11 @@ export default function AdminDashboard() {
             </div>
           )}
         </div>
+        )}
+
+        {tab === "temoignages" && <TestimonialsPanel onToast={showToast} />}
+        {tab === "galerie" && <GalleryPanel onToast={showToast} />}
+        {tab === "activites" && <ActivitiesPanel onToast={showToast} />}
       </main>
 
       {/* Modals */}

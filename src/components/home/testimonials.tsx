@@ -10,70 +10,68 @@ const space = Geist({
   weight: '400',
 });
 
-const testimonials = [
+const FALLBACK_TESTIMONIALS = [
   {
     text: "Sorci Digit a transformé notre vision en une application mobile fluide. L'équipe est très réactive et professionnelle.",
     imageSrc: '/assets/avatars/avatar-1.webp',
-    name: 'Amadou Diallo',
-    username: '@amadou_d',
+    name: 'Abdoulaye Moumouni',
+    username: '@abdoulaye_m',
   },
   {
-    text: "Le nouveau site e-commerce a fait exploser nos ventes. Un design parfait et une expérience utilisateur au top.",
+    text: "Le nouveau site e-commerce a fait exploser nos ventes à Niamey. Un design parfait et une expérience client au top.",
     imageSrc: '/assets/avatars/avatar-2.webp',
-    name: 'Sophie Konaté',
-    username: '@sophie_k',
+    name: 'Hadiza Sani',
+    username: '@hadiza_s',
   },
   {
     text: "Une véritable expertise technique doublée d'un sens aigu du design. C'est l'agence qu'il vous faut.",
     imageSrc: '/assets/avatars/avatar-3.webp',
-    name: 'Karim S.',
-    username: '@karim_tech',
+    name: 'Oumarou Moussa',
+    username: '@oumarou_m',
   },
   {
     text: "Ils ont su comprendre nos besoins et livrer une plateforme B2B robuste et moderne. Bravo à l'équipe !",
-    imageSrc: '/assets/avatar-2.webp',
-    name: 'Marie T.',
-    username: '@marie_pro',
+    imageSrc: '/assets/avatars/avatar-4.webp',
+    name: 'Aïcha Garba',
+    username: '@aicha_g',
   },
   {
     text: "Notre branding n'a jamais été aussi fort. L'identité visuelle créée par Sorci Digit est incroyable.",
     imageSrc: '/assets/avatars/avatar-5.webp',
-    name: 'Léo M.',
-    username: '@leo_create',
+    name: 'Ibrahim Lawali',
+    username: '@ibrahim_l',
   },
   {
-    text: "La digitalisation de nos processus métiers nous a fait gagner un temps précieux. Un investissement très rentable.",
+    text: "La digitalisation de nos processus nous a fait gagner un temps précieux. Un investissement très rentable.",
     imageSrc: '/assets/avatars/avatar-6.webp',
-    name: 'Fatou Diagne',
-    username: '@fatou_d',
+    name: 'Fatouma Amadou',
+    username: '@fatouma_a',
   },
   {
     text: "Un accompagnement au top du début à la fin. L'équipe est à l'écoute et propose toujours les meilleures solutions.",
     imageSrc: '/assets/avatars/avatar-7.webp',
-    name: 'Ayaan M.',
-    username: '@ayaan_m',
+    name: 'Boubacar Harouna',
+    username: '@boubacar_h',
   },
   {
     text: "Leur approche orientée données a considérablement amélioré notre taux de conversion. Merci Sorci Digit !",
-    imageSrc: '/assets/avatar-5.webp',
-    name: 'Sarah R.',
-    username: '@sarah_r',
+    imageSrc: '/assets/avatars/avatar-8.webp',
+    name: 'Ramatou Souley',
+    username: '@ramatou_s',
   },
   {
     text: "Délais respectés, qualité exceptionnelle et communication transparente. Je recommande vivement.",
     imageSrc: '/assets/avatars/avatar-9.webp',
-    name: 'Jean P.',
-    username: '@jean_p',
+    name: 'Issoufou Maïgari',
+    username: '@issoufou_m',
   },
 ];
 
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
+type TestimonialItem = { text: string; imageSrc: string; name: string; username: string };
 
 const TestimonialsColumn = (props: {
   className?: string;
-  testimonials: typeof testimonials;
+  testimonials: TestimonialItem[];
   duration?: number;
 }) => (
   <div className={props.className}>
@@ -124,9 +122,15 @@ const TestimonialsColumn = (props: {
   </div>
 );
 
-const Testimonials = () => {
+const Testimonials = ({ items: itemsProp }: { items?: TestimonialItem[] }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const items = itemsProp && itemsProp.length > 0 ? itemsProp : FALLBACK_TESTIMONIALS;
+
+  const third = Math.ceil(items.length / 3);
+  const firstColumn = items.slice(0, third);
+  const secondColumn = items.slice(third, third * 2);
+  const thirdColumn = items.slice(third * 2);
 
   const handleShareClick = () => {
     const tweets = require('@/lib/tweet-contents').tweetContents;

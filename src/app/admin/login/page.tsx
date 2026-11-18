@@ -12,20 +12,28 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setError("")
 
-    setTimeout(() => {
-      if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
-        sessionStorage.setItem("admin_auth", "true")
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      })
+      if (res.ok) {
         router.push("/admin")
-      } else {
-        setError("Mot de passe incorrect.")
-        setLoading(false)
+        router.refresh()
+        return
       }
-    }, 600)
+      const data = await res.json().catch(() => ({}))
+      setError(data.error || "Mot de passe incorrect.")
+    } catch {
+      setError("Impossible de se connecter. Réessayez.")
+    }
+    setLoading(false)
   }
 
   return (

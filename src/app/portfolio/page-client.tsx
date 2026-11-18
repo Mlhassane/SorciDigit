@@ -1,12 +1,11 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { motion, AnimatePresence, type Variants } from "framer-motion"
 import Link from "next/link"
 import { ArrowRight, Star, Monitor, Smartphone, Loader2, Download, ExternalLink } from "lucide-react"
-import { getProjects } from "@/lib/services"
 
-// ─── Fallback data (used when Supabase is not yet configured) ────────────────
+// ─── Fallback data (used when the database is not yet configured) ────────────
 
 const mobileAppsFallback: any[] = [
   {
@@ -131,24 +130,10 @@ const staggerContainer: Variants = {
 
 // ─── Page component ──────────────────────────────────────────────────────────
 
-export default function PortfolioPage() {
+export default function PortfolioPage({ initialProjects = [] }: { initialProjects?: any[] }) {
   const [activeTab, setActiveTab] = useState<"mobile" | "web">("mobile")
-  const [projects, setProjects] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    async function loadProjects() {
-      try {
-        const data = await getProjects()
-        setProjects(data)
-      } catch (err) {
-        console.error("Erreur de chargement des projets :", err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadProjects()
-  }, [])
+  const [projects] = useState<any[]>(initialProjects)
+  const [loading] = useState(false)
 
   const mobileApps =
     projects.filter((p) => p.type === "mobile").length > 0
@@ -279,7 +264,7 @@ export default function PortfolioPage() {
                           <a
                             href={project.link}
                             target="_blank"
-                            download={project.link.includes('supabase') || project.link.endsWith('.apk')}
+                            download={project.link.endsWith('.apk')}
                             className="w-full sm:w-auto bg-black hover:bg-gray-800 text-white font-bold px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 grotesk flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(0,0,0,0.1)] active:scale-95"
                           >
                             <Download className="w-4 h-4" />

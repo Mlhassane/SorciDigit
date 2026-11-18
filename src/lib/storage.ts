@@ -1,8 +1,7 @@
-import { supabase } from './supabase'
-
 /**
- * Upload a file to Supabase Storage and return its public URL.
- * @param bucket  The bucket name (must be public)
+ * Uploads a file to Vercel Blob through the admin API
+ * (the browser never writes to storage directly).
+ * @param bucket  Kept for compatibility (ignored)
  * @param file    The File object to upload
  * @param folder  Optional subfolder (e.g. "apks" or "screenshots")
  */
@@ -11,38 +10,21 @@ export async function uploadToStorage(
   file: File,
   folder: string = ''
 ): Promise<string | null> {
-  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
-  const path = folder ? `${folder}/${Date.now()}-${safeName}` : `${Date.now()}-${safeName}`
+  const form = new FormData()
+  form.append('file', file)
+  form.append('bucket', bucket)
+  form.append('folder', folder)
 
-  const { data, error } = await supabase.storage
-    .from(bucket)
-    .upload(path, file, { upsert: true, cacheControl: '3600' })
-
-  if (error) {
-    console.error('Storage upload error:', error.message)
+  try {
+    const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
+    const data = await res.json().catch(() => ({}))
+    if (!res.ok) {
+      console.error('Upload error:', data.error || res.statusText)
+      return null
+    }
+    return data.url as string
+  } catch (error) {
+    console.error('Upload error:', error)
     return null
   }
-
-  const { data: { publicUrl } } = supabase.storage
-    .from(bucket)
-    .getPublicUrl(data.path)
-
-  return publicUrl
-}
-
-/**
- * Delete a file from Supabase Storage by its public URL.
- */
-export async function deleteFromStorage(bucket: string, publicUrl: string): Promise<boolean> {
-  // Extract the path from the public URL
-  const urlObj = new URL(publicUrl)
-  const pathStart = urlObj.pathname.indexOf(`/object/public/${bucket}/`) + `/object/public/${bucket}/`.length
-  const filePath = urlObj.pathname.slice(pathStart)
-
-  const { error } = await supabase.storage.from(bucket).remove([filePath])
-  if (error) {
-    console.error('Storage delete error:', error.message)
-    return false
-  }
-  return true
 }

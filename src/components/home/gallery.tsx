@@ -17,7 +17,7 @@ const space = Geist({
 
 
 
-export default function Gallery() {
+export default function Gallery({ images }: { images?: { src: string; alt: string }[] }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -64,7 +64,7 @@ export default function Gallery() {
           </p>
         </motion.div>
         <div className="mx-auto mt-10 w-full max-w-7xl rounded-[24px] p-2 shadow-sm md:rounded-t-[44px]">
-          <CardCaroursalDemo />
+          <CardCaroursalDemo images={images} />
         </div>
         <section className="relative z-50 my-10 mb-20 w-full">
           <div className="mt-20 flex flex-col items-center justify-center">
